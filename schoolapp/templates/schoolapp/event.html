@@ -1,0 +1,21 @@
+{% extends 'schoolapp/base.html' %}
+
+
+{% block title %}{{ event.title }} - událost{% endblock %}
+
+
+{% block content %}
+
+    <h2>{{ event.title }}</h2>
+    <time>
+        Začátek: {{ event.since }}<br>
+        Konec: {{ event.to }}
+    </time>
+
+    <img src="{{ event.picture }}" alt="{{ event.title }}">
+    
+    <p>
+        {{ event.info }}
+    </p>
+
+{% endblock %}

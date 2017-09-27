@@ -1,28 +1,39 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 #from django.utils import timezone
-from .models import News#, Event, Gallery, Page
+from .models import News, Event, Gallery, Page
 
 
-def news(request):
+def homepage(request):
     newss = News.objects.all()
-    return render(request, 'schoolapp/news.html', {'newss': newss})
+    return render(request, 'schoolapp/homepage.html', {'newss': newss})
 
-'''
-def news_detail(request):
-    return render(request, 'schoolapp/news_detail.html', {})
+def news_detail(request, pk):
+    #news = News.objects.get(pk=pk)
+    news = get_object_or_404(News, pk=pk)
+    return render(request, 'schoolapp/news_detail.html', {'news': news})
 
 def calendar(request):
-    return render(request, 'schoolapp/calendar.html', {})
+    events = Event.objects.all()
+    return render(request, 'schoolapp/calendar.html', {'events': events})
 
-def event(request):
-    return render(request, 'schoolapp/event.html', {})
+def event(request, pk):
+    event = get_object_or_404(Event, pk=pk)
+    return render(request, 'schoolapp/event.html', {'event': event})
 
 def gallery(request):
-    return render(request, 'schoolapp/gallery.html', {})
+    gallerys = Gallery.objects.all()
+    return render(request, 'schoolapp/gallery.html', {'gallerys': gallerys})
 
-def page(request):
-    return render(request, 'schoolapp/page.html', {})
 
+def gallery_detail(request, pk):
+    gallery = get_object_or_404(Gallery, pk=pk)
+    return render(request, 'schoolapp/gallery_detail.html', {'gallery': gallery})
+
+def page(request, pk):
+    page = get_object_or_404(Page, pk=pk)
+    return render(request, 'schoolapp/page.html', {'page': page})
+
+'''
 def admin(request):
     return render(request, 'schoolapp/admin.html', {})
 

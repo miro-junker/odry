@@ -1,0 +1,42 @@
+{% extends 'schoolapp/base.html' %}
+
+
+{% block title %}Aktuality{% endblock %}
+
+
+{% block content %}
+    <h2>Aktuality</h2>
+    {% for news in newss %}
+        <div class="news">
+            <h3>
+                <a href="{% url 'news_detail' pk=news.pk %}">
+                    {{ news.title }}
+                </a>
+                <time>
+                    {{ news.date }}
+                </time>
+            </h3>
+            <img src="{{ news.picture }}" alt="{{ news.title }}">
+            <p>
+                {{ news.perex }}
+            </p>
+        </div>
+    {% endfor %}
+
+    <!--
+    <p class="more">
+        <a href="#">Zobrazit více aktualit</a>
+    </p>
+
+    <ul class="pagination">
+        <li><a href="#">1</a></li>
+        <li><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+        <li class="pagination__active"><a href="#">4</a></li>
+        <li><a href="#">5</a></li>
+        <li><a href="#">6</a></li>
+        <li><a href="#">7</a></li>
+    </ul>
+    -->
+
+{% endblock %}

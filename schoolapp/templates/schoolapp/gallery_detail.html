@@ -1,0 +1,20 @@
+{% extends 'schoolapp/base.html' %}
+
+
+{% block title %}{{ gallery.title }} - galerie{% endblock %}
+
+
+{% block content %}
+
+    <h2>{{ gallery.title }}</h2>
+    <time>
+        {{ gallery.date }}
+    </time>
+
+    <img src="{{ gallery.picture }}" alt="{{ gallery.title }}">
+    
+    <p>
+        Obrázky v: {{ gallery.path }}
+    </p>
+
+{% endblock %}

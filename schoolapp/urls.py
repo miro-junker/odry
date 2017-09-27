@@ -2,24 +2,23 @@ from django.conf.urls import url
 from . import views
 
 urlpatterns = [
-     url(r'^$', views.news, name='news'),
+     url(r'^$', views.homepage, name='homepage'),
 
-     url(r'^aktualita/$', views.news_detail, name='news_detail'),
-
-#     url(r'^kalendar$', views.calendar, name='calendar'),
-#     url(r'^udalost/$', views.event, name='event'),
-#     url(r'^fotogalerie$', views.gallery, name='gallery'),
-#     url(r'^galerie/$', views.gallery_detail, name='gallery_detail'),
+     url(r'^aktualita/(?P<pk>[0-9]+)/$', views.news_detail, name='news_detail'),
+     url(r'^kalendar/$', views.calendar, name='calendar'),
+     url(r'^udalost/(?P<pk>[0-9]+)/$', views.event, name='event'),
+     url(r'^galerie/$', views.gallery, name='gallery'),
+     url(r'^galerie/(?P<pk>[0-9]+)/$', views.gallery_detail, name='gallery_detail'),
      
-#     url(r'strana/^$', views.page, name='page'),
+     url(r'^strana/(?P<pk>[0-9]+)/$', views.page, name='page'),
 
 
-#     url(r'^admin$', views.admin, name='admin'),
-#     url(r'^aktualita//edit$', views.news_edit, name='news_edit'),
-#     url(r'^udalost//edit$', views.event_edit, name='event_edit'),
-#     url(r'^galerie//edit$', views.gallery_edit, name='gallery_edit'),
+#     url(r'^admin/$', views.admin, name='admin'),
+#     url(r'^aktualita/(?P<pk>[0-9]+)/edit/$', views.news_edit, name='news_edit'),
+#     url(r'^udalost/(?P<pk>[0-9]+)/edit/$', views.event_edit, name='event_edit'),
+#     url(r'^galerie/(?P<pk>[0-9]+)/edit/$', views.gallery_edit, name='gallery_edit'),
      
-#     url(r'^strana//edit$', views.page_edit, name='page_edit'),
+#     url(r'^strana/(?P<pk>[0-9]+)/edit/$', views.page_edit, name='page_edit'),
 ]
 
 '''

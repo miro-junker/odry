@@ -1,0 +1,22 @@
+{% extends 'schoolapp/base.html' %}
+
+
+{% block title %}Foto &amp; video galerie{% endblock %}
+
+
+{% block content %}
+    <h2>Foto &amp; video galerie</h2>
+    {% for gallery in gallerys %}
+        <div class="gallery">
+            <h3>
+                <a href="{% url 'gallery_detail' pk=gallery.pk %}">
+                    {{ gallery.title }}
+                </a>
+                <time>
+                    {{ gallery.date }}
+                </time>
+            </h3>
+            <img src="{{ gallery.picture }}" alt="{{ gallery.title }}">
+        </div>
+    {% endfor %}
+{% endblock %}

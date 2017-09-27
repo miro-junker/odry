@@ -1,0 +1,22 @@
+{% extends 'schoolapp/base.html' %}
+
+
+{% block title %}Kalendář{% endblock %}
+
+
+{% block content %}
+    <h2>Kalendář</h2>
+    {% for event in events %}
+        <div class="event">
+            <h3>
+                <a href="{% url 'event' pk=event.pk %}">
+                    {{ event.title }}
+                </a>
+            </h3>
+            <time>
+                Začátek: {{ event.since }}<br>
+                Konec: {{ event.to }}
+            </time>
+        </div>
+    {% endfor %}
+{% endblock %}
