@@ -1,0 +1,13 @@
+.clear
+  clear: both
+
+=not-list
+  list-style-type: none
+  padding-left: 0
+
+=clearfix
+  &:after
+    content: ""
+    clear: both
+    display: table
+    overflow: hidden

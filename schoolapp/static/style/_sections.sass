@@ -1,0 +1,21 @@
+.news
+  +clearfix
+  margin-bottom: $space-vertical
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.3), 0px 6px 27px rgba(0, 0, 0, 0.05)
+  background: white
+  border-radius: 25px
+  padding: $space-news
+  .news__picture
+    max-width: $width-news_picture
+    float: left
+    margin-right: $space-news
+
+.gallery
+  @extend .news
+  .gallery__thumb
+    max-width: $width-news_picture
+    float: left
+    margin-right: $space-news
+
+.more
+  text-align: center
