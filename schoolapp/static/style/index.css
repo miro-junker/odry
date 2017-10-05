@@ -1,0 +1,174 @@
+.clear {
+  clear: both;
+}
+
+*:not(img), *:before, *:after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  height: 100%;
+}
+
+html body {
+  margin: 0;
+  height: 100%;
+}
+
+hr {
+  display: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+p, ul, blockquote, h2, h3, footer strong {
+  cursor: default;
+}
+
+a, button, label {
+  cursor: pointer;
+}
+
+img.center {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+p, ul, ol, h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+}
+
+.header {
+  padding: 30px 60px;
+}
+
+.header:after {
+  content: "";
+  clear: both;
+  display: table;
+  overflow: hidden;
+}
+
+.header .header__logo {
+  float: left;
+  margin-right: 30px;
+}
+
+.header .header__search {
+  float: right;
+}
+
+.nav ul {
+  background: #f9e539;
+  list-style-type: none;
+  padding-left: 0;
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: bold;
+  font-size: 0px;
+}
+
+.nav ul li {
+  display: inline-block;
+  border-right: 1px solid white;
+  font-size: 1rem;
+  padding: 10px 15px;
+}
+
+.nav ul li:hover {
+  background-color: #701C95;
+}
+
+.nav ul li:hover a {
+  color: white;
+}
+
+.nav ul li:last-child {
+  border-right: none;
+}
+
+.nav ul li a {
+  color: black;
+  text-decoration: none;
+}
+
+.section .section__wrapper {
+  max-width: 1060px;
+  padding: 30px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.footer {
+  padding: 30px;
+  background: #333;
+  color: white;
+  text-align: center;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  color: #3e3e3e;
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+.pagination {
+  list-style-type: none;
+  padding-left: 0;
+  text-align: center;
+}
+
+.pagination li {
+  display: inline-block;
+  width: 1.5em;
+  height: 1.5em;
+}
+
+.pagination .pagination__active {
+  border: 1px solid gray;
+  border-radius: 100%;
+}
+
+.pagination .pagination__active a {
+  text-decoration: none;
+}
+
+.news, .gallery {
+  margin-bottom: 2rem;
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.3), 0px 6px 27px rgba(0, 0, 0, 0.05);
+  background: white;
+  border-radius: 25px;
+  padding: 20px;
+}
+
+.news:after, .gallery:after {
+  content: "";
+  clear: both;
+  display: table;
+  overflow: hidden;
+}
+
+.news .news__picture, .gallery .news__picture {
+  max-width: 300px;
+  float: left;
+  margin-right: 20px;
+}
+
+.gallery .gallery__thumb {
+  max-width: 300px;
+  float: left;
+  margin-right: 20px;
+}
+
+.more {
+  text-align: center;
+}
+
+.nav ul li a {
+  font-size: 18px;
+}

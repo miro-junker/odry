@@ -15,8 +15,8 @@ class News(models.Model):
 
 class Event(models.Model):
     title = models.CharField(max_length=200)
-    since = models.DateTimeField()
-    to = models.DateTimeField()
+    since = models.DateTimeField(default=timezone.now)
+    to = models.DateTimeField(default=timezone.now)
     info = models.TextField()
     picture = models.CharField(max_length=200)
 

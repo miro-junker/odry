@@ -1,0 +1,14 @@
+{% extends 'schoolapp/admin_base.html' %}
+
+
+{% block content %}
+    <h2>Editace novinky:</h2>
+    
+    <form method="POST" class="news-form" action="./">
+        {% csrf_token %}
+        {{ form.as_p }}
+        
+        <button type="submit">Uložit</button>
+    </form>
+
+{% endblock %}
