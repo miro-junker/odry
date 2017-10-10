@@ -3,6 +3,9 @@ from django.shortcuts import render, get_object_or_404, redirect
 from .models import News, Event, Gallery, Page
 from .forms import NewsForm, EventForm, GalleryForm, PageForm
 
+import markdown
+import bleach
+
 
 def homepage(request):
     newss = News.objects.all()
@@ -11,7 +14,8 @@ def homepage(request):
 def news_detail(request, pk):
     #news = News.objects.get(pk=pk)
     news = get_object_or_404(News, pk=pk)
-    return render(request, 'schoolapp/news_detail.html', {'news': news})
+    content_html = markdown.markdown(bleach.clean(news.content))
+    return render(request, 'schoolapp/news_detail.html', {'news': news, 'content_html': content_html})
 
 def calendar(request):
     events = Event.objects.all()
@@ -19,7 +23,8 @@ def calendar(request):
 
 def event(request, pk):
     event = get_object_or_404(Event, pk=pk)
-    return render(request, 'schoolapp/event.html', {'event': event})
+    info_html = markdown.markdown(bleach.clean(event.info))
+    return render(request, 'schoolapp/event.html', {'event': event, 'info_html': info_html})
 
 def gallery(request):
     gallerys = Gallery.objects.all()
@@ -31,7 +36,8 @@ def gallery_detail(request, pk):
 
 def page(request, pk):
     page = get_object_or_404(Page, pk=pk)
-    return render(request, 'schoolapp/page.html', {'page': page})
+    content_html = markdown.markdown(bleach.clean(page.content))
+    return render(request, 'schoolapp/page.html', {'page': page, 'content_html': content_html})
 
 def admin(request):
     newss = News.objects.all()

@@ -7,6 +7,6 @@
 {% block content %}
     <h2>{{ page.title }}</h2>
     
-    {{ page.content|linebreaksbr }}
+    {{ content_html|safe }}
 
 {% endblock %}
