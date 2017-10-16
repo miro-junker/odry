@@ -14,8 +14,8 @@
                 </a>
             </h3>
             <time>
-                Začátek: {{ event.since }}<br>
-                Konec: {{ event.to }}
+                Začátek: {{ event.since|date:'d.m.Y' }}<br>
+                Konec: {{ event.to|date:'d.m.Y' }}
             </time>
         </div>
     {% endfor %}

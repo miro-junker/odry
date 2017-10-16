@@ -39,7 +39,7 @@
                             <a href="{% url 'news_edit' pk=news.pk %}" class="btn-edit">Upravit</a>
                         </td>
                         <td>
-                            <a href="" class="btn-delete">Smazat</a>
+                            <a href="{% url 'news_remove' pk=news.pk %}" class="btn-delete">Smazat</a>
                         </td>
                     </tr>
                 {% endfor %}
@@ -62,7 +62,7 @@
                             <a href="{% url 'event_edit' pk=event.pk %}" class="btn-edit">Upravit</a>
                         </td>
                         <td>
-                            <a href="" class="btn-delete">Smazat</a>
+                            <a href="{% url 'event_remove' pk=event.pk %}" class="btn-delete">Smazat</a>
                         </td>
                     </tr>
                 {% endfor %}
@@ -85,7 +85,7 @@
                             <a href="{% url 'gallery_edit' pk=gallery.pk %}" class="btn-edit">Upravit</a>
                         </td>
                         <td>
-                            <a href="" class="btn-delete">Smazat</a>
+                            <a href="{% url 'gallery_remove' pk=gallery.pk %}" class="btn-delete">Smazat</a>
                         </td>
                     </tr>
                 {% endfor %}

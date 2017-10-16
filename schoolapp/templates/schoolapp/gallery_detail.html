@@ -8,7 +8,7 @@
 
     <h2>{{ gallery.title }}</h2>
     <time>
-        {{ gallery.date }}
+        {{ gallery.date|date:'d.m.Y' }}
     </time>
 
     <img src="{{ gallery.picture }}" alt="{{ gallery.title }}">

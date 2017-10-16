@@ -13,7 +13,7 @@
                     {{ gallery.title }}
                 </a>
                 <time>
-                    {{ gallery.date }}
+                    {{ gallery.date|date:'d.m.Y' }}
                 </time>
             </h3>
             <img src="{{ gallery.picture }}" alt="{{ gallery.title }}">

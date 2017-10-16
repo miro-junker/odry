@@ -8,8 +8,8 @@
 
     <h2>{{ event.title }}</h2>
     <time>
-        Začátek: {{ event.since }}<br>
-        Konec: {{ event.to }}
+        Začátek: {{ event.since|date:'d.m.Y' }}<br>
+        Konec: {{ event.to|date:'d.m.Y' }}
     </time>
 
     <img src="{{ event.picture }}" alt="{{ event.title }}">

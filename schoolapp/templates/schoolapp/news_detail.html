@@ -6,7 +6,7 @@
 
 {% block content %}
     <h2>{{ news.title }}</h2>
-    <time>{{ news.date }}</time>
+    <time>{{ news.date|date:'d.m.Y' }}</time>
 
     <img src="{{ news.picture }}" alt="{{ news.title }}">
     

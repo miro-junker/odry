@@ -75,6 +75,11 @@ def news_edit(request, pk):
         form = NewsForm(instance=news)
     return render(request, 'schoolapp/news_edit.html', {'newss': newss, 'events': events, 'gallerys': gallerys, 'pages': pages, 'form': form})
 
+def news_remove(request, pk):
+    news = get_object_or_404(News, pk=pk)
+    news.delete()
+    return redirect('admin')
+
 def event_new(request):
     newss = News.objects.all()
     events = Event.objects.all()
@@ -84,7 +89,7 @@ def event_new(request):
         form = EventForm(request.POST)
         if form.is_valid():
             event_data = form.save()
-            return redirect('event_detail', pk=event_data.pk)
+            return redirect('event', pk=event_data.pk)
     else:
         form = EventForm()        
     return render(request, 'schoolapp/event_edit.html', {'newss': newss, 'events': events, 'gallerys': gallerys, 'pages': pages, 'form': form})
@@ -103,6 +108,11 @@ def event_edit(request, pk):
     else:
         form = EventForm(instance=this_event)
     return render(request, 'schoolapp/event_edit.html', {'newss': newss, 'events': events, 'gallerys': gallerys, 'pages': pages, 'form': form})
+
+def event_remove(request, pk):
+    event = get_object_or_404(Event, pk=pk)
+    event.delete()
+    return redirect('admin')
 
 def gallery_new(request):
     newss = News.objects.all()
@@ -132,6 +142,11 @@ def gallery_edit(request, pk):
     else:
         form = GalleryForm(instance=this_gallery)
     return render(request, 'schoolapp/gallery_edit.html', {'newss': newss, 'events': events, 'gallerys': gallerys, 'pages': pages, 'form': form})
+
+def gallery_remove(request, pk):
+    gallery = get_object_or_404(Gallery, pk=pk)
+    gallery.delete()
+    return redirect('admin')
 
 def page_edit(request, pk):
     newss = News.objects.all()

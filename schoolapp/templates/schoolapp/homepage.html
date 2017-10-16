@@ -13,7 +13,7 @@
                     {{ news.title }}
                 </a>
                 <time>
-                    {{ news.date }}
+                    {{ news.date|date:'d.m.Y' }}
                 </time>
             </h3>
             <img src="{{ news.picture }}" alt="{{ news.title }}">
