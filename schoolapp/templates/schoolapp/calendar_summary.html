@@ -1,0 +1,58 @@
+{% extends 'schoolapp/base.html' %}
+
+
+{% block title %}Kalendář{% endblock %}
+
+
+{% block content %}
+    <h2>Kalendář akcí: {{ month }} / {{ year }}</h2>
+
+    {# Nejbližší akce #}
+    {% for event in events %}
+        <div class="event">
+            <h3>
+                <a href="{% url 'event' pk=event.pk %}">
+                    {{ event.title }}
+                </a>
+            </h3>
+            <time>
+                Začátek: {{ event.since|date:'d.m.Y' }}<br>
+                Konec: {{ event.to|date:'d.m.Y' }}
+            </time>
+        </div>
+    {% endfor %}
+
+
+    <table class="calendar">
+        <tr>
+            <th>Po</th>
+            <th>Út</th>
+            <th>St</th>
+            <th>Čt</th>
+            <th>Pá</th>
+            <th>So</th>
+            <th>Ne</th>
+        </tr>
+
+        {% for week in calendar_data %}
+            <tr>
+                {% for day in week %}
+                    <td>
+                        <h4>{{ day.number }}</h4>
+                        <ul>
+                            {% for event in day.events %}
+                                <li><a href="{% url 'event' pk=event.pk %}">{{ event }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+    </table>
+
+    <p>
+        <a href="{% url 'calendar_month' year=nav.prevYear month=nav.prevMonth %}">Předchozí měsíc ({{ nav.prevMonth }} / {{ nav.prevYear }})</a> |
+        <a href="{% url 'calendar_month' year=nav.nextYear month=nav.nextMonth %}">Následující měsíc ({{ nav.nextMonth }} / {{ nav.nextYear }})</a>
+    </p>
+
+{% endblock %}
