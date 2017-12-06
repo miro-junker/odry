@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
-#from django.utils import timezone
+from django.utils import timezone
 from .models import News, Event, Gallery, Page
 from .forms import NewsForm, EventForm, GalleryForm, PageForm
 
@@ -31,7 +31,7 @@ def calendar_summary(request, year=False, month=False):
     # find out days in month and first day
     weekdaysBeforeMonth = calendar.monthrange(int(year), int(month))[0]
     daysLeft = calendar.monthrange(int(year), int(month))[1]
-    # 
+    # go by days and fill in calendar
     calendar_data = []
     date_cnt = 1
     while daysLeft > 0:
@@ -65,7 +65,11 @@ def calendar_summary(request, year=False, month=False):
         'prevMonth': int(month)-1 if int(month)>1 else 12,
         'prevYear': int(year) if int(month)>1 else int(year)-1,
     }
-    return render(request, 'schoolapp/calendar_summary.html', {'calendar_data': calendar_data, 'year': year, 'month': month, 'nav': nav})
+    # get earliest event
+    now = timezone.now()
+    earliest = Event.objects.all().filter(to__gt=now).order_by('since')[0]
+    print(earliest)
+    return render(request, 'schoolapp/calendar_summary.html', {'calendar_data': calendar_data, 'year': year, 'month': month, 'nav': nav, 'earliest': earliest})
 
 
 def event(request, pk):

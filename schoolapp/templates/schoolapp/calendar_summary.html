@@ -7,22 +7,6 @@
 {% block content %}
     <h2>Kalendář akcí: {{ month }} / {{ year }}</h2>
 
-    {# Nejbližší akce #}
-    {% for event in events %}
-        <div class="event">
-            <h3>
-                <a href="{% url 'event' pk=event.pk %}">
-                    {{ event.title }}
-                </a>
-            </h3>
-            <time>
-                Začátek: {{ event.since|date:'d.m.Y' }}<br>
-                Konec: {{ event.to|date:'d.m.Y' }}
-            </time>
-        </div>
-    {% endfor %}
-
-
     <table class="calendar">
         <tr>
             <th>Po</th>
@@ -54,5 +38,21 @@
         <a href="{% url 'calendar_month' year=nav.prevYear month=nav.prevMonth %}">Předchozí měsíc ({{ nav.prevMonth }} / {{ nav.prevYear }})</a> |
         <a href="{% url 'calendar_month' year=nav.nextYear month=nav.nextMonth %}">Následující měsíc ({{ nav.nextMonth }} / {{ nav.nextYear }})</a>
     </p>
+
+
+    {# Nejbližší akce #}
+    
+    <div class="event">
+        <h3>
+            Nejbližší akce:
+            <a href="{#% url 'event' pk=earliest.pk %#}">{{ earliest.title }}</a>
+            ({{ earliest.since|date:'d.m.Y' }} - {{ earliest.to|date:'d.m.Y' }})
+        </h3>
+        <p>
+            {{ earliest.info }}
+        </p>
+        Více info
+    </div>
+    
 
 {% endblock %}
