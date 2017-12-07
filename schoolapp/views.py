@@ -11,7 +11,7 @@ import calendar
 
 
 def homepage(request):
-    newss = News.objects.all()
+    newss = News.objects.all().order_by('-date')
     return render(request, 'schoolapp/homepage.html', {'newss': newss})
 
 
@@ -79,7 +79,7 @@ def event(request, pk):
 
 
 def gallery(request):
-    gallerys = Gallery.objects.all()
+    gallerys = Gallery.objects.all().order_by('-date')
     return render(request, 'schoolapp/gallery.html', {'gallerys': gallerys})
 
 
