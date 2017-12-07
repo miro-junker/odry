@@ -17,13 +17,13 @@
 </head>
 <body>
 
-    <h1>Správa obsahu SŠ Odry [<a href="{% url 'logout' %}">Odhlásit</a>]</h1>
+    <h1>Správa obsahu <a href="{% url 'homepage' %}" target="_blank">SŠ Odry</a> [<a href="{% url 'logout' %}">Odhlásit</a>]</h1>
 
     <div class="main">
 
         <aside class="overview">
             
-            <h2>Aktuality</h2>
+            <h2><a href="{% url 'homepage' %}" target="_blank">Aktuality</a></h2>
 
             <ul>
                 <li><a href="{% url 'news_new' %}"><span class="glyphicon glyphicon-plus"></span> Přidat aktualitu</a></li>
@@ -33,7 +33,7 @@
                 {% for news in newss %}
                     <tr>
                         <td>
-                            {{ news.title }}
+                            <a href="{% url 'news_detail' pk=news.pk %}" target="_blank">{{ news.title }}</a>
                         </td>
                         <td>
                             <a href="{% url 'news_edit' pk=news.pk %}" class="btn-edit"><span class="glyphicon glyphicon-edit"></span></a>
@@ -47,7 +47,7 @@
 
             <hr>
             
-            <h2>Události</h2>
+            <h2><a href="{% url 'calendar_summary' %}" target="_blank">Události</a></h2>
             <ul>
                 <li><a href="{% url 'event_new' %}"><span class="glyphicon glyphicon-plus"></span> Přidat událost</a></li>
             </ul>
@@ -56,7 +56,7 @@
                 {% for event in events %}
                     <tr>
                         <td>
-                            {{ event.title }}
+                            <a href="{% url 'event' pk=event.pk %}" target="_blank">{{ event.title }}</a>
                         </td>
                         <td>
                             <a href="{% url 'event_edit' pk=event.pk %}" class="btn-edit"><span class="glyphicon glyphicon-edit"></span></a>
@@ -70,7 +70,7 @@
 
             <hr>
             
-            <h2>Galerie</h2>
+            <h2><a href="{% url 'gallery' %}" target="_blank">Galerie</a></h2>
             <ul>
                 <li><a href="{% url 'gallery_new' %}"><span class="glyphicon glyphicon-plus"></span> Přidat galerii</a></li>
             </ul>
@@ -79,7 +79,7 @@
                 {% for gallery in gallerys %}
                     <tr>
                         <td>
-                            {{ gallery.title }}
+                            <a href="{% url 'gallery_detail' pk=gallery.pk %}" target="_blank">{{ gallery.title }}</a>
                         </td>
                         <td>
                             <a href="{% url 'gallery_edit' pk=gallery.pk %}" class="btn-edit"><span class="glyphicon glyphicon-edit"></span></a>
@@ -102,7 +102,7 @@
                             {{ page.pk }}
                         </td>
                         <td>
-                            {{ page.title }}
+                            <a href="{% url 'page' pk=page.pk %}" target="_blank">{{ page.title }}</a>
                         </td>
                         <td>
                             <a href="{% url 'page_edit' pk=page.pk %}" class="btn-edit"><span class="glyphicon glyphicon-edit"></span></a>

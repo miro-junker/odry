@@ -54,13 +54,13 @@
     <div class="event">
         <h3>
             Nejbližší akce:
-            <a href="{#% url 'event' pk=earliest.pk %#}">{{ earliest.title }}</a>
+            <a href="{% url 'event' pk=earliest.pk %}">{{ earliest.title }}</a>
             ({{ earliest.since|date:'d.m.Y' }} - {{ earliest.to|date:'d.m.Y' }})
         </h3>
         <p>
             {{ earliest.info }}
         </p>
-        Více info
+        <a href="{% url 'event' pk=earliest.pk %}">Více o události</a>
     </div>
     
 
