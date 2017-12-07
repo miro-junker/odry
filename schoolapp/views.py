@@ -36,11 +36,14 @@ def calendar_summary(request, year=False, month=False):
     date_cnt = 1
     while daysLeft > 0:
         # create whole week
-        week = []
+        week = {
+            'number': datetime.date(int(year), int(month), date_cnt).isocalendar()[1],
+            'days': [],
+        }
         for day in range(7):
             # days in first week before actual month
             if weekdaysBeforeMonth > 0:
-                week.append(" ")
+                week['days'].append(" ")
                 weekdaysBeforeMonth -= 1
             # valid days in month
             elif daysLeft > 0:
@@ -51,12 +54,12 @@ def calendar_summary(request, year=False, month=False):
                     'number': date_cnt,
                     'events': events,
                 }
-                week.append(validDay)
+                week['days'].append(validDay)
                 date_cnt += 1
                 daysLeft -= 1
             # days in last week after actual month
             else:
-                week.append(" ")
+                week['days'].append(" ")
         calendar_data.append(week)
     # calculate previous and next month
     nav = {

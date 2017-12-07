@@ -9,6 +9,7 @@
 
     <table class="calendar">
         <tr>
+            <th>Týden č.</th>
             <th>Po</th>
             <th>Út</th>
             <th>St</th>
@@ -20,7 +21,15 @@
 
         {% for week in calendar_data %}
             <tr>
-                {% for day in week %}
+                <td>
+                    <em>{{ week.number }}</em>
+                    {% if week.number|divisibleby:2 %}
+                        (sudý)
+                    {% else %}
+                        (lichý)
+                    {% endif %}
+                </td>
+                {% for day in week.days %}
                     <td>
                         <h4>{{ day.number }}</h4>
                         <ul>
