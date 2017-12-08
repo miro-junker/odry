@@ -11,12 +11,13 @@ from .models import News, Event, Gallery, Page
 from .forms import NewsForm, EventForm, GalleryForm, PageForm
 
 
-per_page = 10
+pagination_per_page = 8
+pagination_orphans = 1
 
 
 def homepage(request, page=1):
     news_all = News.objects.all().order_by('-date')
-    paginator = Paginator(news_all, per_page)
+    paginator = Paginator(news_all, pagination_per_page, pagination_orphans)
     try:
         news_list = paginator.page(page)
     except EmptyPage:
@@ -93,7 +94,7 @@ def event(request, pk):
 
 def gallery(request, page=1):
     galleries_all = Gallery.objects.all().order_by('-date')
-    paginator = Paginator(galleries_all, per_page)
+    paginator = Paginator(galleries_all, pagination_per_page, pagination_orphans)
     try:
         gallery_list = paginator.page(page)
     except EmptyPage:

@@ -20,6 +20,7 @@
             <p>
                 {{ news.perex }}
             </p>
+            <a href="{% url 'news_detail' pk=news.pk %}">Celá zpráva &raquo;</a>
         </div>
     {% endfor %}
 
