@@ -6,7 +6,7 @@
 
 {% block content %}
     <h2>Aktuálně</h2>
-    {% for news in newss %}
+    {% for news in news_list %}
         <div class="news">
             <h3>
                 <a href="{% url 'news_detail' pk=news.pk %}">
@@ -23,20 +23,21 @@
         </div>
     {% endfor %}
 
-    <!--
-    <p class="more">
-        <a href="#">Zobrazit více aktualit</a>
-    </p>
 
-    <ul class="pagination">
-        <li><a href="#">1</a></li>
-        <li><a href="#">2</a></li>
-        <li><a href="#">3</a></li>
-        <li class="pagination__active"><a href="#">4</a></li>
-        <li><a href="#">5</a></li>
-        <li><a href="#">6</a></li>
-        <li><a href="#">7</a></li>
-    </ul>
-    -->
+    <div class="pagination">
+        {% if news_list.has_previous %}
+            {% if news_list.previous_page_number == 1 %}
+                <a href="{% url 'homepage' %}">předchozí</a>
+            {% else %}
+                <a href="{% url 'homepage_page' page=news_list.previous_page_number %}">předchozí</a>
+            {% endif %}
+        {% endif %}
+
+        <strong>Strana {{ news_list.number }} z {{ news_list.paginator.num_pages }}</strong>
+
+        {% if news_list.has_next %}
+            <a href="{% url 'homepage_page' page=news_list.next_page_number %}">následující</a>
+        {% endif %}
+    </div>
 
 {% endblock %}

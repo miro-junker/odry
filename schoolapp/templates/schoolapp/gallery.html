@@ -6,7 +6,7 @@
 
 {% block content %}
     <h2>Foto a video</h2>
-    {% for gallery in gallerys %}
+    {% for gallery in gallery_list %}
         <div class="gallery">
             <h3>
                 <a href="{% url 'gallery_detail' pk=gallery.pk %}">
@@ -19,4 +19,22 @@
             <img src="{{ gallery.picture }}" alt="{{ gallery.title }}">
         </div>
     {% endfor %}
+
+
+    <div class="pagination">
+        {% if gallery_list.has_previous %}
+            {% if gallery_list.previous_page_number == 1 %}
+                <a href="{% url 'gallery' %}">předchozí</a>
+            {% else %}
+                <a href="{% url 'gallery_page' page=gallery_list.previous_page_number %}">předchozí</a>
+            {% endif %}
+        {% endif %}
+
+        <strong>Strana {{ gallery_list.number }} z {{ gallery_list.paginator.num_pages }}</strong>
+
+        {% if gallery_list.has_next %}
+            <a href="{% url 'gallery_page' page=gallery_list.next_page_number %}">následující</a>
+        {% endif %}
+    </div>
+
 {% endblock %}

@@ -1,18 +1,28 @@
-from django.shortcuts import render, get_object_or_404, redirect
-from django.contrib.auth.decorators import login_required
-from django.utils import timezone
-from .models import News, Event, Gallery, Page
-from .forms import NewsForm, EventForm, GalleryForm, PageForm
-
 import markdown
 import bleach
 import datetime
 import calendar
 
+from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib.auth.decorators import login_required
+from django.utils import timezone
+from django.core.paginator import Paginator, EmptyPage
+from .models import News, Event, Gallery, Page
+from .forms import NewsForm, EventForm, GalleryForm, PageForm
 
-def homepage(request):
-    newss = News.objects.all().order_by('-date')
-    return render(request, 'schoolapp/homepage.html', {'newss': newss})
+
+per_page = 10
+
+
+def homepage(request, page=1):
+    news_all = News.objects.all().order_by('-date')
+    paginator = Paginator(news_all, per_page)
+    try:
+        news_list = paginator.page(page)
+    except EmptyPage:
+        # get last page
+        news_list = paginator.page(paginator.num_pages)
+    return render(request, 'schoolapp/homepage.html', {'news_list': news_list})
 
 
 def news_detail(request, pk):
@@ -81,9 +91,15 @@ def event(request, pk):
     return render(request, 'schoolapp/event.html', {'event': event, 'info_html': info_html})
 
 
-def gallery(request):
-    gallerys = Gallery.objects.all().order_by('-date')
-    return render(request, 'schoolapp/gallery.html', {'gallerys': gallerys})
+def gallery(request, page=1):
+    galleries_all = Gallery.objects.all().order_by('-date')
+    paginator = Paginator(galleries_all, per_page)
+    try:
+        gallery_list = paginator.page(page)
+    except EmptyPage:
+        #get last page
+        gallery_list = paginator.page(paginator.num_pages)
+    return render(request, 'schoolapp/gallery.html', {'gallery_list': gallery_list})
 
 
 def gallery_detail(request, pk):
