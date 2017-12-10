@@ -1,7 +1,9 @@
 # Todo
 - bootstrap 4 (i v administraci)
+- odstranit title z uploaded files
 - vsechny admin url zacinaji na /sprava
 - přejmenovat upload na download a zviditelnit
+- přejmenovat file_new na files nebo file_edit
 
 # Fáze 1
 - upload dokumentů (PDF) - pro začátek možná přes kopírování souborů nebo FTP klient
@@ -18,13 +20,14 @@
 - h1 odkaz nikoliv z homepage
 - data bez času v administraci
 - české url na login
+- rychloodkazy z webu do administrace pro přihlášené
 
 # Fáze 3
 - drobečková navigace? (jak vyřešit hierarchii statických stránek?)
 - SEO URL (statické stránky, potom i aktuality, akce a galerie) 
 - ajaxové dočítání aktualit?
 - české slovní názvy měsíců v datumech
-- flash messages po mazání
+- flash messages po mazání, přidávání, editaci
 - jen heslo, jméno netřeba
 - jazykové mutace
 

@@ -272,3 +272,10 @@ def file_new(request):
         if file_form.is_valid():
             file_form.save()
     return render(request, 'schoolapp/file_edit.html', {'newss': newss, 'events': events, 'gallerys': gallerys, 'pages': pages, 'form': form, 'files': files})
+
+
+@login_required
+def file_remove(request, pk):
+    file = get_object_or_404(File, pk=pk)
+    file.delete()
+    return redirect('file_new')

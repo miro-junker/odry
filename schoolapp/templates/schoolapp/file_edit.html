@@ -18,7 +18,7 @@
         {% for file in files %}
             <tr>
                 <td>{{ file }}</td>
-                <td><a href="#">smazat</a></td>
+                <td><a href="{% url 'file_remove' pk=file.pk %}"><span class="glyphicon glyphicon-trash"></span></a></td>
             </tr>
         {% endfor %}
     </table>
