@@ -1,7 +1,9 @@
 # Todo
 - bootstrap 4 (i v administraci)
-- upload náhledových fotek
 - frontend
+- admin: markdown odkazy do statických stránek
+- adminNavigator - data předávat jednotně
+- homepage přejmenovat na news
 
 # Fáze 1
 - fotogalerie = externí služba (např. rajče)
@@ -27,6 +29,7 @@
 - flash messages po mazání, přidávání, editaci
 - jen heslo, jméno netřeba
 - jazykové mutace
+- obrázky do administrace
 
 # Poznámky
 - běží to na Savaně (zachovat kvůli e-mailům)
@@ -37,3 +40,6 @@
 - spuštění serveru: `python manage.py runserver`
 - pro aktualizaci modelu: `python manage.py migrate schoolapp`
 - vytvoření admina: `python manage.py createsuperuser`
+
+# Deploy
+- `pip install Pillow` - obrázková knihovna

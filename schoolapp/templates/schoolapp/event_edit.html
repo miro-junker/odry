@@ -4,7 +4,7 @@
 {% block content %}
     <h2>Editace události:</h2>
     
-    <form method="POST" class="form-event" action="./">
+    <form method="POST" enctype="multipart/form-data" class="form-event" action="./">
         {% csrf_token %}
         {{ form.as_p }}
         

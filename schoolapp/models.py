@@ -10,7 +10,7 @@ class News(models.Model):
     date = models.DateTimeField(default=timezone.now)
     perex = models.TextField()
     content = models.TextField()
-    picture = models.CharField(max_length=200)
+    picture = models.ImageField(upload_to='news/')
 
     def __str__(self):
         return self.title
@@ -21,7 +21,7 @@ class Event(models.Model):
     since = models.DateTimeField(default=timezone.now)
     to = models.DateTimeField(default=timezone.now)
     info = models.TextField()
-    picture = models.CharField(max_length=200)
+    picture = models.ImageField(upload_to='events/')
 
     def __str__(self):
         return self.title
@@ -30,7 +30,7 @@ class Event(models.Model):
 class Gallery(models.Model):
     title = models.CharField(max_length=200)
     date = models.DateTimeField(default=timezone.now)
-    picture = models.CharField(max_length=200)
+    picture = models.ImageField(upload_to='gallery/')
     path = models.CharField(max_length=200)
 
     def __str__(self):

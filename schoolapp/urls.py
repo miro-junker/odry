@@ -19,7 +19,7 @@ urlpatterns = [
 
     url(r'^strana/(?P<pk>[0-9]+)/$', views.page, name='page'),
 
-
+    # admin
     url(r'^sprava/$', views.admin, name='admin'),
 
     url(r'^sprava/aktualita/nova/$', views.news_new, name='news_new'),

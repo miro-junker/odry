@@ -116,21 +116,21 @@ def page(request, pk):
 
 @login_required
 def admin(request):
-    newss = News.objects.all()
-    events = Event.objects.all()
-    gallerys = Gallery.objects.all()
-    pages = Page.objects.all()
+    newss = News.objects.all().order_by('-date')
+    events = Event.objects.all().order_by('-to')
+    gallerys = Gallery.objects.all().order_by('-date')
+    pages = Page.objects.all().order_by('title')
     return render(request, 'schoolapp/admin.html', {'newss': newss, 'events': events, 'gallerys': gallerys, 'pages': pages})
 
 
 @login_required
 def news_new(request):
-    newss = News.objects.all()
-    events = Event.objects.all()
-    gallerys = Gallery.objects.all()
-    pages = Page.objects.all()
+    newss = News.objects.all().order_by('-date')
+    events = Event.objects.all().order_by('-to')
+    gallerys = Gallery.objects.all().order_by('-date')
+    pages = Page.objects.all().order_by('title')
     if request.method == "POST":
-        form = NewsForm(request.POST)
+        form = NewsForm(request.POST, request.FILES)
         if form.is_valid():
             news = form.save()
             return redirect('news_detail', pk=news.pk)
@@ -141,10 +141,10 @@ def news_new(request):
 
 @login_required
 def news_edit(request, pk):
-    newss = News.objects.all()
-    events = Event.objects.all()
-    gallerys = Gallery.objects.all()
-    pages = Page.objects.all()
+    newss = News.objects.all().order_by('-date')
+    events = Event.objects.all().order_by('-to')
+    gallerys = Gallery.objects.all().order_by('-date')
+    pages = Page.objects.all().order_by('title')
     news = get_object_or_404(News, pk=pk)
     if request.method == "POST":
         form = NewsForm(request.POST, instance=news)
@@ -164,12 +164,12 @@ def news_remove(request, pk):
 
 @login_required
 def event_new(request):
-    newss = News.objects.all()
-    events = Event.objects.all()
-    gallerys = Gallery.objects.all()
-    pages = Page.objects.all()
+    newss = News.objects.all().order_by('-date')
+    events = Event.objects.all().order_by('-to')
+    gallerys = Gallery.objects.all().order_by('-date')
+    pages = Page.objects.all().order_by('title')
     if request.method == "POST":
-        form = EventForm(request.POST)
+        form = EventForm(request.POST, request.FILES)
         if form.is_valid():
             event_data = form.save()
             return redirect('event', pk=event_data.pk)
@@ -180,10 +180,10 @@ def event_new(request):
 
 @login_required
 def event_edit(request, pk):
-    newss = News.objects.all()
-    events = Event.objects.all()
-    gallerys = Gallery.objects.all()
-    pages = Page.objects.all()
+    newss = News.objects.all().order_by('-date')
+    events = Event.objects.all().order_by('-to')
+    gallerys = Gallery.objects.all().order_by('-date')
+    pages = Page.objects.all().order_by('title')
     this_event = get_object_or_404(Event, pk=pk)
     if request.method == "POST":
         form = EventForm(request.POST, instance=this_event)
@@ -204,12 +204,12 @@ def event_remove(request, pk):
 
 @login_required
 def gallery_new(request):
-    newss = News.objects.all()
-    events = Event.objects.all()
-    gallerys = Gallery.objects.all()
-    pages = Page.objects.all()
+    newss = News.objects.all().order_by('-date')
+    events = Event.objects.all().order_by('-to')
+    gallerys = Gallery.objects.all().order_by('-date')
+    pages = Page.objects.all().order_by('title')
     if request.method == "POST":
-        form = GalleryForm(request.POST)
+        form = GalleryForm(request.POST, request.FILES)
         if form.is_valid():
             gallery_data = form.save()
             return redirect('gallery_detail', pk=gallery_data.pk)
@@ -220,10 +220,10 @@ def gallery_new(request):
 
 @login_required
 def gallery_edit(request, pk):
-    newss = News.objects.all()
-    events = Event.objects.all()
-    gallerys = Gallery.objects.all()
-    pages = Page.objects.all()
+    newss = News.objects.all().order_by('-date')
+    events = Event.objects.all().order_by('-to')
+    gallerys = Gallery.objects.all().order_by('-date')
+    pages = Page.objects.all().order_by('title')
     this_gallery = get_object_or_404(Gallery, pk=pk)
     if request.method == "POST":
         form = GalleryForm(request.POST, instance=this_gallery)
@@ -244,10 +244,10 @@ def gallery_remove(request, pk):
 
 @login_required
 def page_edit(request, pk):
-    newss = News.objects.all()
-    events = Event.objects.all()
-    gallerys = Gallery.objects.all()
-    pages = Page.objects.all()
+    newss = News.objects.all().order_by('-date')
+    events = Event.objects.all().order_by('-to')
+    gallerys = Gallery.objects.all().order_by('-date')
+    pages = Page.objects.all().order_by('title')
     this_page = get_object_or_404(Page, pk=pk)
     if request.method == "POST":
         form = PageForm(request.POST, instance=this_page)
@@ -261,10 +261,10 @@ def page_edit(request, pk):
 
 @login_required
 def file_edit(request):
-    newss = News.objects.all()
-    events = Event.objects.all()
-    gallerys = Gallery.objects.all()
-    pages = Page.objects.all()
+    newss = News.objects.all().order_by('-date')
+    events = Event.objects.all().order_by('-to')
+    gallerys = Gallery.objects.all().order_by('-date')
+    pages = Page.objects.all().order_by('title')
     files = File.objects.all()
     form = FileForm()
     if request.method == "POST":
