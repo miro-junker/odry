@@ -16,7 +16,7 @@
                     {{ gallery.date|date:'d.m.Y' }}
                 </time>
             </h3>
-            <img src="{{ gallery.picture }}" alt="{{ gallery.title }}">
+            <img src="{{ gallery.picture.url }}" alt="{{ gallery.title }}">
             <p><a href="{% url 'gallery_detail' pk=gallery.pk %}">Zobrazit galerii</a></p>
         </div>
     {% endfor %}

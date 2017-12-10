@@ -30,6 +30,7 @@
 - jen heslo, jméno netřeba
 - jazykové mutace
 - obrázky do administrace
+- různé pozadí pro sudé a liché řádky v tabulkách
 
 # Poznámky
 - běží to na Savaně (zachovat kvůli e-mailům)

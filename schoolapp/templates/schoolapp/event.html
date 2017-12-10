@@ -12,7 +12,7 @@
         Konec: {{ event.to|date:'d.m.Y' }}
     </time>
 
-    <img src="{{ event.picture }}" alt="{{ event.title }}">
+    <img src="{{ event.picture.url }}" alt="{{ event.title }}">
     
     <p>
         {{ info_html|safe }}
