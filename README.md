@@ -1,6 +1,7 @@
 # Todo
 - bootstrap 4 (i v administraci)
-- správa souborů
+- vsechny admin url zacinaji na /sprava
+- přejmenovat upload na download a zviditelnit
 
 # Fáze 1
 - upload dokumentů (PDF) - pro začátek možná přes kopírování souborů nebo FTP klient
@@ -30,3 +31,9 @@
 # Poznámky
 - běží to na Savaně (zachovat kvůli e-mailům)
 - formuláře stačí jako statická stránka
+
+# Použití
+- aktivace prostředí: `venv/Scripts/activate`
+- spuštění serveru: `python manage.py runserver`
+- pro aktualizaci modelu: `python manage.py migrate schoolapp`
+- vytvoření admina: `python manage.py createsuperuser`

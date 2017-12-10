@@ -1,5 +1,5 @@
 from django import forms
-from .models import News, Event, Gallery, Page
+from .models import News, Event, Gallery, Page, File
 
 
 class NewsForm(forms.ModelForm):
@@ -22,3 +22,7 @@ class PageForm(forms.ModelForm):
         model = Page
         fields = ('title', 'content',)
 
+class FileForm(forms.ModelForm):
+    class Meta:
+        model = File
+        fields = ('title', 'file',)

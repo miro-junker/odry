@@ -32,6 +32,9 @@ urlpatterns = [
     url(r'^galerie/(?P<pk>[0-9]+)/edit/$', views.gallery_edit, name='gallery_edit'),
     url(r'^galerie/(?P<pk>[0-9]+)/smazat/$', views.gallery_remove, name='gallery_remove'),
 
+    url(r'^pridat/soubor/$', views.file_new, name='file_new'),
+    #url(r'^soubor/(?P<pk>[0-9]+)/smazat$', views.file_remove, name='file_remove'),
+
     url(r'^strana/(?P<pk>[0-9]+)/edit/$', views.page_edit, name='page_edit'),
 ]
 

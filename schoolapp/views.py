@@ -7,8 +7,8 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.utils import timezone
 from django.core.paginator import Paginator, EmptyPage
-from .models import News, Event, Gallery, Page
-from .forms import NewsForm, EventForm, GalleryForm, PageForm
+from .models import News, Event, Gallery, Page, File
+from .forms import NewsForm, EventForm, GalleryForm, PageForm, FileForm
 
 
 pagination_per_page = 8
@@ -257,3 +257,18 @@ def page_edit(request, pk):
     else:
         form = PageForm(instance=this_page)
     return render(request, 'schoolapp/page_edit.html', {'newss': newss, 'events': events, 'gallerys': gallerys, 'pages': pages, 'form': form})
+
+
+@login_required
+def file_new(request):
+    newss = News.objects.all()
+    events = Event.objects.all()
+    gallerys = Gallery.objects.all()
+    pages = Page.objects.all()
+    files = File.objects.all()
+    form = FileForm()
+    if request.method == "POST":
+        file_form = FileForm(request.POST, request.FILES)
+        if file_form.is_valid():
+            file_form.save()
+    return render(request, 'schoolapp/file_edit.html', {'newss': newss, 'events': events, 'gallerys': gallerys, 'pages': pages, 'form': form, 'files': files})

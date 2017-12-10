@@ -1,0 +1,26 @@
+{% extends 'schoolapp/admin_base.html' %}
+
+
+{% block content %}
+    <h2>Nahrát nový soubor:</h2>
+    
+    <form method="POST" enctype="multipart/form-data" class="form-file" action="./">
+        {% csrf_token %}
+        {{ form.as_p }}
+        
+        <button type="submit">Uložit</button>
+    </form>
+
+    <hr>
+
+    <h2>Nahrané soubory</h2>
+    <table>
+        {% for file in files %}
+            <tr>
+                <td>{{ file }}</td>
+                <td><a href="#">smazat</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+
+{% endblock %}
