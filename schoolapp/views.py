@@ -260,7 +260,7 @@ def page_edit(request, pk):
 
 
 @login_required
-def file_new(request):
+def file_edit(request):
     newss = News.objects.all()
     events = Event.objects.all()
     gallerys = Gallery.objects.all()
@@ -278,4 +278,4 @@ def file_new(request):
 def file_remove(request, pk):
     file = get_object_or_404(File, pk=pk)
     file.delete()
-    return redirect('file_new')
+    return redirect('file_edit')

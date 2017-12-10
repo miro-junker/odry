@@ -20,22 +20,22 @@ urlpatterns = [
 
     url(r'^sprava/$', views.admin, name='admin'),
 
-    url(r'^pridat/aktualita/$', views.news_new, name='news_new'),
-    url(r'^aktualita/(?P<pk>[0-9]+)/edit/$', views.news_edit, name='news_edit'),
-    url(r'^aktualita/(?P<pk>[0-9]+)/smazat/$', views.news_remove, name='news_remove'),
+    url(r'^sprava/aktualita/nova/$', views.news_new, name='news_new'),
+    url(r'^sprava/aktualita/(?P<pk>[0-9]+)/$', views.news_edit, name='news_edit'),
+    url(r'^sprava/aktualita/(?P<pk>[0-9]+)/smazat/$', views.news_remove, name='news_remove'),
 
-    url(r'^pridat/udalost/$', views.event_new, name='event_new'),
-    url(r'^udalost/(?P<pk>[0-9]+)/edit/$', views.event_edit, name='event_edit'),
-    url(r'^udalost/(?P<pk>[0-9]+)/smazat/$', views.event_remove, name='event_remove'),
+    url(r'^sprava/udalost/nova/$', views.event_new, name='event_new'),
+    url(r'^sprava/udalost/(?P<pk>[0-9]+)/$', views.event_edit, name='event_edit'),
+    url(r'^sprava/udalost/(?P<pk>[0-9]+)/smazat/$', views.event_remove, name='event_remove'),
 
-    url(r'^pridat/galerie/$', views.gallery_new, name='gallery_new'),
-    url(r'^galerie/(?P<pk>[0-9]+)/edit/$', views.gallery_edit, name='gallery_edit'),
-    url(r'^galerie/(?P<pk>[0-9]+)/smazat/$', views.gallery_remove, name='gallery_remove'),
+    url(r'^sprava/galerie/nova/$', views.gallery_new, name='gallery_new'),
+    url(r'^sprava/galerie/(?P<pk>[0-9]+)/$', views.gallery_edit, name='gallery_edit'),
+    url(r'^sprava/galerie/(?P<pk>[0-9]+)/smazat/$', views.gallery_remove, name='gallery_remove'),
 
-    url(r'^pridat/soubor/$', views.file_new, name='file_new'),
-    url(r'^soubor/(?P<pk>[0-9]+)/smazat$', views.file_remove, name='file_remove'),
+    url(r'^sprava/soubory/$', views.file_edit, name='file_edit'),
+    url(r'^sprava/soubor/(?P<pk>[0-9]+)/smazat$', views.file_remove, name='file_remove'),
 
-    url(r'^strana/(?P<pk>[0-9]+)/edit/$', views.page_edit, name='page_edit'),
+    url(r'^sprava/strana/(?P<pk>[0-9]+)/$', views.page_edit, name='page_edit'),
 ]
 
 '''

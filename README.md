@@ -1,12 +1,10 @@
 # Todo
 - bootstrap 4 (i v administraci)
-- odstranit title z uploaded files
-- vsechny admin url zacinaji na /sprava
 - přejmenovat upload na download a zviditelnit
-- přejmenovat file_new na files nebo file_edit
+- upload náhledových fotek
+- frontend
 
 # Fáze 1
-- upload dokumentů (PDF) - pro začátek možná přes kopírování souborů nebo FTP klient
 - fotogalerie = externí služba (např. rajče)
 
 # Fáze 2

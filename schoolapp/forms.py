@@ -25,4 +25,4 @@ class PageForm(forms.ModelForm):
 class FileForm(forms.ModelForm):
     class Meta:
         model = File
-        fields = ('title', 'file',)
+        fields = ('file',)
