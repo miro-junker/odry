@@ -1,6 +1,5 @@
 {% extends 'schoolapp/admin_base.html' %}
 
-
 {% block content %}
     <h2>Nahrát nový soubor</h2>
     
@@ -8,19 +7,29 @@
         {% csrf_token %}
         {{ form.as_p }}
         
-        <button type="submit">Uložit</button>
+        <button type="submit">Nahrát soubor na server</button>
     </form>
 
     <hr>
 
     <h2>Nahrané soubory</h2>
-    <table>
-        {% for file in files %}
+    {% if files|length > 0 %}
+        <table>
             <tr>
-                <td>{{ file|cut:"upload/" }}</td>
-                <td><a href="{% url 'file_remove' pk=file.pk %}"><span class="glyphicon glyphicon-trash"></span></a></td>
-            </tr>
-        {% endfor %}
-    </table>
+                <th>Soubor</th>
+                <th>Kód pro vložení do stránky</th>
+                <th>Odstranit</th>
+            </th>
+            {% for file in files %}
+                <tr>
+                    <td><a href="{{ file.file.url }}" target="_blank">{{ file }}</a></td>
+                    <td>[text odkazu]({{ file.file.url }})</td>
+                    <td><a href="{% url 'file_remove' pk=file.pk %}"><span class="glyphicon glyphicon-trash"></span></a></td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>Na serveru nejsou aktuálně nahrány žádné soubory.</p>
+    {% endif %}
 
 {% endblock %}

@@ -45,7 +45,7 @@ class Page(models.Model):
         return self.title
 
 class File(models.Model):
-    file = models.FileField(upload_to='upload/')
+    file = models.FileField(upload_to='')
 
     def __str__(self):
         return self.file.name

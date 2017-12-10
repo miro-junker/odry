@@ -1,6 +1,5 @@
 # Todo
 - bootstrap 4 (i v administraci)
-- přejmenovat upload na download a zviditelnit
 - upload náhledových fotek
 - frontend
 
