@@ -1,9 +1,10 @@
 # Todo
-- bootstrap 4 (i v administraci)
+- bootstrap 4
 - frontend
 
 # Fáze 1
 - fotogalerie = externí služba (např. rajče)
+- search google
 
 # Fáze 2
 - favicon
@@ -17,6 +18,7 @@
 - data bez času v administraci
 - české url na login
 - rychloodkazy z webu do administrace pro přihlášené
+- bootstrap 4 v administraci
 
 # Fáze 3
 - drobečková navigace? (jak vyřešit hierarchii statických stránek?)

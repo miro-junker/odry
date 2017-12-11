@@ -9,7 +9,8 @@
     {% for gallery in gallery_list %}
         <div class="gallery">
             <h3>
-                <a href="{% url 'gallery_detail' pk=gallery.pk %}">
+                {# <a href="{% url 'gallery_detail' pk=gallery.pk %}"> #}
+                <a href="{{ gallery.path }}" target="blank">
                     {{ gallery.title }}
                 </a>
                 <time>
@@ -17,7 +18,12 @@
                 </time>
             </h3>
             <img src="{{ gallery.picture.url }}" alt="{{ gallery.title }}">
-            <p><a href="{% url 'gallery_detail' pk=gallery.pk %}">Zobrazit galerii</a></p>
+            <p>
+                {# <a href="{% url 'gallery_detail' pk=gallery.pk %}"> #}
+                <a href="{{ gallery.path }}" target="blank">
+                    Zobrazit galerii
+                </a>
+            </p>
         </div>
     {% endfor %}
 

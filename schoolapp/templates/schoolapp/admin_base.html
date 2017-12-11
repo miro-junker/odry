@@ -32,7 +32,9 @@
             <table>
                 {% for news in navigator_items.news %}
                     <tr>
-                        <td><a href="{% url 'news_detail' pk=news.pk %}" target="_blank"><span class="glyphicon glyphicon-new-window"></span></a></td>
+                        <td>
+                            <a href="{% url 'news_detail' pk=news.pk %}" target="_blank"><span class="glyphicon glyphicon-new-window"></span></a>
+                        </td>
                         <td>
                             {{ news.title }}
                         </td>
@@ -124,10 +126,6 @@
             <ul>
                 <li><a href="{% url 'file_edit' %}"><span class="glyphicon glyphicon-plus"></span> Nahrát nový soubor</a></li>
             </ul>
-
-            <table>
-                
-            </table>
         
         </aside>
 

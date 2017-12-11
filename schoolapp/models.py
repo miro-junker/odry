@@ -11,10 +11,8 @@ class News(models.Model):
     perex = models.TextField()
     content = models.TextField()
     picture = models.ImageField(upload_to='news/')
-
     def __str__(self):
         return self.title
-
 
 class Event(models.Model):
     title = models.CharField(max_length=200)
@@ -22,35 +20,27 @@ class Event(models.Model):
     to = models.DateTimeField(default=timezone.now)
     info = models.TextField()
     picture = models.ImageField(upload_to='events/')
-
     def __str__(self):
         return self.title
-
 
 class Gallery(models.Model):
     title = models.CharField(max_length=200)
     date = models.DateTimeField(default=timezone.now)
     picture = models.ImageField(upload_to='gallery/')
     path = models.CharField(max_length=200)
-
     def __str__(self):
         return self.title
-
 
 class Page(models.Model):
     title = models.CharField(max_length=200)
     content = models.TextField()
-
     def __str__(self):
         return self.title
 
 class File(models.Model):
     file = models.FileField(upload_to='')
-
     def __str__(self):
         return self.file.name
-
-
 
 
 def _delete_file(path):
@@ -77,12 +67,10 @@ def delete_picture(sender, instance, **kwargs):
 def delete_old_picture(sender, instance, **kwargs):
     if not instance.pk:
         return False
-
     try:
         old_file = sender.objects.get(pk=instance.pk).picture
     except sender.DoesNotExist:
         return False
-
     new_file = instance.picture
     if not old_file == new_file:
         _delete_file(old_file.path)
