@@ -54,6 +54,7 @@
     <div class="event">
         <h3>
             Nejbližší akce:
+            <img src="{{ earliest.picture.url }}" alt="{{ earliest.title }}">
             <a href="{% url 'event' pk=earliest.pk %}">{{ earliest.title }}</a>
             ({{ earliest.since|date:'d.m.Y' }} - {{ earliest.to|date:'d.m.Y' }})
         </h3>

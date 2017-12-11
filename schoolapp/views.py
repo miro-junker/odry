@@ -145,7 +145,7 @@ def news_new(request):
 def news_edit(request, pk):
     news = get_object_or_404(News, pk=pk)
     if request.method == "POST":
-        form = NewsForm(request.POST, instance=news)
+        form = NewsForm(request.POST, request.FILES, instance=news)
         if form.is_valid():
             news = form.save()
             return redirect('news_detail', pk=news.pk)
@@ -176,7 +176,7 @@ def event_new(request):
 def event_edit(request, pk):
     event = get_object_or_404(Event, pk=pk)
     if request.method == "POST":
-        form = EventForm(request.POST, instance=event)
+        form = EventForm(request.POST, request.FILES, instance=event)
         if form.is_valid():
             event_data = form.save()
             return redirect('event', pk=event_data.pk)
@@ -208,7 +208,7 @@ def gallery_new(request):
 def gallery_edit(request, pk):
     gallery = get_object_or_404(Gallery, pk=pk)
     if request.method == "POST":
-        form = GalleryForm(request.POST, instance=gallery)
+        form = GalleryForm(request.POST, request.FILES, instance=gallery)
         if form.is_valid():
             gallery_data = form.save()
             return redirect('gallery_detail', pk=gallery_data.pk)

@@ -1,7 +1,6 @@
 # Todo
 - bootstrap 4 (i v administraci)
 - frontend
-- automatické mazání thumbnails
 
 # Fáze 1
 - fotogalerie = externí služba (např. rajče)

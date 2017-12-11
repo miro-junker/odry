@@ -52,27 +52,37 @@ class File(models.Model):
 
 
 
-# These two auto-delete files from filesystem when they are unneeded:
 
+def _delete_file(path):
+    if os.path.isfile(path):
+        os.remove(path)
+
+# auto-delete files from filesystem when unneeded
 @receiver(models.signals.post_delete, sender=File)
-def auto_delete_file_on_delete(sender, instance, **kwargs):
-    # Deletes file from filesystem when corresponding `File` object is deleted.
+def delete_file(sender, instance, **kwargs):
     if instance.file:
-        if os.path.isfile(instance.file.path):
-            os.remove(instance.file.path)
+        _delete_file(instance.file.path)
 
-@receiver(models.signals.pre_save, sender=File)
-def auto_delete_file_on_change(sender, instance, **kwargs):
-    # Deletes old file from filesystem when corresponding `File` object is updated with new file.
+@receiver(models.signals.post_delete, sender=Event)
+@receiver(models.signals.post_delete, sender=Gallery)
+@receiver(models.signals.post_delete, sender=News)
+def delete_picture(sender, instance, **kwargs):
+    if instance.picture:
+        _delete_file(instance.picture.path)
+
+# auto-delete files from filesystem when updated
+@receiver(models.signals.pre_save, sender=Event)
+@receiver(models.signals.pre_save, sender=Gallery)
+@receiver(models.signals.pre_save, sender=News)
+def delete_old_picture(sender, instance, **kwargs):
     if not instance.pk:
         return False
 
     try:
-        old_file = MediaFile.objects.get(pk=instance.pk).file
-    except MediaFile.DoesNotExist:
+        old_file = sender.objects.get(pk=instance.pk).picture
+    except sender.DoesNotExist:
         return False
 
-    new_file = instance.file
+    new_file = instance.picture
     if not old_file == new_file:
-        if os.path.isfile(old_file.path):
-            os.remove(old_file.path)
+        _delete_file(old_file.path)

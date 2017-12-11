@@ -11,7 +11,7 @@
         {{ gallery.date|date:'d.m.Y' }}
     </time>
 
-    <img src="{{ gallery.picture }}" alt="{{ gallery.title }}">
+    <img src="{{ gallery.picture.url }}" alt="{{ gallery.title }}">
     
     <p>
         Obrázky v: {{ gallery.path }}
