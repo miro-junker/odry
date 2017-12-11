@@ -4,8 +4,8 @@ from django.conf.urls.static import static
 from . import views
 
 urlpatterns = [
-    url(r'^$', views.homepage, name='homepage'),
-    url(r'^novinky/strana/(?P<page>[0-9]+)/$', views.homepage, name='homepage_page'),
+    url(r'^$', views.news, name='news'),
+    url(r'^novinky/strana/(?P<page>[0-9]+)/$', views.news, name='news_page'),
 
     url(r'^aktualita/(?P<pk>[0-9]+)/$', views.news_detail, name='news_detail'),
 

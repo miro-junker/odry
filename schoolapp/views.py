@@ -15,7 +15,17 @@ pagination_per_page = 8
 pagination_orphans = 1
 
 
-def homepage(request, page=1):
+def get_navigator_items():
+    navigator_items = {
+        'news': News.objects.all().order_by('-date'),
+        'event': Event.objects.all().order_by('-to'),
+        'gallery': Gallery.objects.all().order_by('-date'),
+        'page': Page.objects.all().order_by('title'),
+    }
+    return navigator_items
+
+
+def news(request, page=1):
     news_all = News.objects.all().order_by('-date')
     paginator = Paginator(news_all, pagination_per_page, pagination_orphans)
     try:
@@ -23,14 +33,14 @@ def homepage(request, page=1):
     except EmptyPage:
         # get last page
         news_list = paginator.page(paginator.num_pages)
-    return render(request, 'schoolapp/homepage.html', {'news_list': news_list})
+    return render(request, 'schoolapp/news.html', {'news_list':news_list})
 
 
 def news_detail(request, pk):
     #news = News.objects.get(pk=pk)
     news = get_object_or_404(News, pk=pk)
     content_html = markdown.markdown(bleach.clean(news.content))
-    return render(request, 'schoolapp/news_detail.html', {'news': news, 'content_html': content_html})
+    return render(request, 'schoolapp/news_detail.html', {'news':news, 'content_html':content_html})
 
 
 def calendar_summary(request, year=False, month=False):
@@ -83,13 +93,13 @@ def calendar_summary(request, year=False, month=False):
     now = timezone.now()
     earliest = Event.objects.all().filter(to__gt=now).order_by('since')[0]
     print(earliest)
-    return render(request, 'schoolapp/calendar_summary.html', {'calendar_data': calendar_data, 'year': year, 'month': month, 'nav': nav, 'earliest': earliest})
+    return render(request, 'schoolapp/calendar_summary.html', {'calendar_data':calendar_data, 'year':year, 'month':month, 'nav':nav, 'earliest':earliest})
 
 
 def event(request, pk):
     event = get_object_or_404(Event, pk=pk)
     info_html = markdown.markdown(bleach.clean(event.info))
-    return render(request, 'schoolapp/event.html', {'event': event, 'info_html': info_html})
+    return render(request, 'schoolapp/event.html', {'event':event, 'info_html':info_html})
 
 
 def gallery(request, page=1):
@@ -100,35 +110,27 @@ def gallery(request, page=1):
     except EmptyPage:
         #get last page
         gallery_list = paginator.page(paginator.num_pages)
-    return render(request, 'schoolapp/gallery.html', {'gallery_list': gallery_list})
+    return render(request, 'schoolapp/gallery.html', {'gallery_list':gallery_list})
 
 
 def gallery_detail(request, pk):
     gallery = get_object_or_404(Gallery, pk=pk)
-    return render(request, 'schoolapp/gallery_detail.html', {'gallery': gallery})
+    return render(request, 'schoolapp/gallery_detail.html', {'gallery':gallery})
 
 
 def page(request, pk):
     page = get_object_or_404(Page, pk=pk)
     content_html = markdown.markdown(bleach.clean(page.content))
-    return render(request, 'schoolapp/page.html', {'page': page, 'content_html': content_html})
+    return render(request, 'schoolapp/page.html', {'page':page, 'content_html':content_html})
 
 
 @login_required
 def admin(request):
-    newss = News.objects.all().order_by('-date')
-    events = Event.objects.all().order_by('-to')
-    gallerys = Gallery.objects.all().order_by('-date')
-    pages = Page.objects.all().order_by('title')
-    return render(request, 'schoolapp/admin.html', {'newss': newss, 'events': events, 'gallerys': gallerys, 'pages': pages})
+    return render(request, 'schoolapp/admin.html', {'navigator_items':get_navigator_items()})
 
 
 @login_required
 def news_new(request):
-    newss = News.objects.all().order_by('-date')
-    events = Event.objects.all().order_by('-to')
-    gallerys = Gallery.objects.all().order_by('-date')
-    pages = Page.objects.all().order_by('title')
     if request.method == "POST":
         form = NewsForm(request.POST, request.FILES)
         if form.is_valid():
@@ -136,15 +138,11 @@ def news_new(request):
             return redirect('news_detail', pk=news.pk)
     else:
         form = NewsForm()        
-    return render(request, 'schoolapp/news_edit.html', {'newss': newss, 'events': events, 'gallerys': gallerys, 'pages': pages, 'form': form})
+    return render(request, 'schoolapp/news_edit.html', {'navigator_items':get_navigator_items(), 'form':form})
 
 
 @login_required
 def news_edit(request, pk):
-    newss = News.objects.all().order_by('-date')
-    events = Event.objects.all().order_by('-to')
-    gallerys = Gallery.objects.all().order_by('-date')
-    pages = Page.objects.all().order_by('title')
     news = get_object_or_404(News, pk=pk)
     if request.method == "POST":
         form = NewsForm(request.POST, instance=news)
@@ -153,7 +151,7 @@ def news_edit(request, pk):
             return redirect('news_detail', pk=news.pk)
     else:
         form = NewsForm(instance=news)
-    return render(request, 'schoolapp/news_edit.html', {'newss': newss, 'events': events, 'gallerys': gallerys, 'pages': pages, 'form': form})
+    return render(request, 'schoolapp/news_edit.html', {'navigator_items':get_navigator_items(), 'form':form, 'news':news})
 
 
 @login_required
@@ -164,10 +162,6 @@ def news_remove(request, pk):
 
 @login_required
 def event_new(request):
-    newss = News.objects.all().order_by('-date')
-    events = Event.objects.all().order_by('-to')
-    gallerys = Gallery.objects.all().order_by('-date')
-    pages = Page.objects.all().order_by('title')
     if request.method == "POST":
         form = EventForm(request.POST, request.FILES)
         if form.is_valid():
@@ -175,24 +169,20 @@ def event_new(request):
             return redirect('event', pk=event_data.pk)
     else:
         form = EventForm()        
-    return render(request, 'schoolapp/event_edit.html', {'newss': newss, 'events': events, 'gallerys': gallerys, 'pages': pages, 'form': form})
+    return render(request, 'schoolapp/event_edit.html', {'navigator_items':get_navigator_items(), 'form':form})
 
 
 @login_required
 def event_edit(request, pk):
-    newss = News.objects.all().order_by('-date')
-    events = Event.objects.all().order_by('-to')
-    gallerys = Gallery.objects.all().order_by('-date')
-    pages = Page.objects.all().order_by('title')
-    this_event = get_object_or_404(Event, pk=pk)
+    event = get_object_or_404(Event, pk=pk)
     if request.method == "POST":
-        form = EventForm(request.POST, instance=this_event)
+        form = EventForm(request.POST, instance=event)
         if form.is_valid():
             event_data = form.save()
             return redirect('event', pk=event_data.pk)
     else:
-        form = EventForm(instance=this_event)
-    return render(request, 'schoolapp/event_edit.html', {'newss': newss, 'events': events, 'gallerys': gallerys, 'pages': pages, 'form': form})
+        form = EventForm(instance=event)
+    return render(request, 'schoolapp/event_edit.html', {'navigator_items':get_navigator_items(), 'form':form, 'event':event})
 
 
 @login_required
@@ -204,10 +194,6 @@ def event_remove(request, pk):
 
 @login_required
 def gallery_new(request):
-    newss = News.objects.all().order_by('-date')
-    events = Event.objects.all().order_by('-to')
-    gallerys = Gallery.objects.all().order_by('-date')
-    pages = Page.objects.all().order_by('title')
     if request.method == "POST":
         form = GalleryForm(request.POST, request.FILES)
         if form.is_valid():
@@ -215,24 +201,20 @@ def gallery_new(request):
             return redirect('gallery_detail', pk=gallery_data.pk)
     else:
         form = GalleryForm()        
-    return render(request, 'schoolapp/gallery_edit.html', {'newss': newss, 'events': events, 'gallerys': gallerys, 'pages': pages, 'form': form})
+    return render(request, 'schoolapp/gallery_edit.html', {'navigator_items':get_navigator_items(), 'form':form})
 
 
 @login_required
 def gallery_edit(request, pk):
-    newss = News.objects.all().order_by('-date')
-    events = Event.objects.all().order_by('-to')
-    gallerys = Gallery.objects.all().order_by('-date')
-    pages = Page.objects.all().order_by('title')
-    this_gallery = get_object_or_404(Gallery, pk=pk)
+    gallery = get_object_or_404(Gallery, pk=pk)
     if request.method == "POST":
-        form = GalleryForm(request.POST, instance=this_gallery)
+        form = GalleryForm(request.POST, instance=gallery)
         if form.is_valid():
             gallery_data = form.save()
             return redirect('gallery_detail', pk=gallery_data.pk)
     else:
-        form = GalleryForm(instance=this_gallery)
-    return render(request, 'schoolapp/gallery_edit.html', {'newss': newss, 'events': events, 'gallerys': gallerys, 'pages': pages, 'form': form})
+        form = GalleryForm(instance=gallery)
+    return render(request, 'schoolapp/gallery_edit.html', {'navigator_items':get_navigator_items(), 'form':form, 'gallery':gallery})
 
 
 @login_required
@@ -244,34 +226,26 @@ def gallery_remove(request, pk):
 
 @login_required
 def page_edit(request, pk):
-    newss = News.objects.all().order_by('-date')
-    events = Event.objects.all().order_by('-to')
-    gallerys = Gallery.objects.all().order_by('-date')
-    pages = Page.objects.all().order_by('title')
-    this_page = get_object_or_404(Page, pk=pk)
+    page = get_object_or_404(Page, pk=pk)
     if request.method == "POST":
-        form = PageForm(request.POST, instance=this_page)
+        form = PageForm(request.POST, instance=page)
         if form.is_valid():
             page_data = form.save()
             return redirect('page', pk=page_data.pk)
     else:
-        form = PageForm(instance=this_page)
-    return render(request, 'schoolapp/page_edit.html', {'newss': newss, 'events': events, 'gallerys': gallerys, 'pages': pages, 'form': form})
+        form = PageForm(instance=page)
+    return render(request, 'schoolapp/page_edit.html', {'navigator_items':get_navigator_items(), 'form':form, 'page':page})
 
 
 @login_required
 def file_edit(request):
-    newss = News.objects.all().order_by('-date')
-    events = Event.objects.all().order_by('-to')
-    gallerys = Gallery.objects.all().order_by('-date')
-    pages = Page.objects.all().order_by('title')
     files = File.objects.all()
     form = FileForm()
     if request.method == "POST":
         file_form = FileForm(request.POST, request.FILES)
         if file_form.is_valid():
             file_form.save()
-    return render(request, 'schoolapp/file_edit.html', {'newss': newss, 'events': events, 'gallerys': gallerys, 'pages': pages, 'form': form, 'files': files})
+    return render(request, 'schoolapp/file_edit.html', {'navigator_items':get_navigator_items(), 'form':form, 'files':files})
 
 
 @login_required

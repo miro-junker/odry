@@ -1,9 +1,7 @@
 # Todo
 - bootstrap 4 (i v administraci)
 - frontend
-- admin: markdown odkazy do statických stránek
-- adminNavigator - data předávat jednotně
-- homepage přejmenovat na news
+- automatické mazání thumbnails
 
 # Fáze 1
 - fotogalerie = externí služba (např. rajče)
@@ -31,6 +29,7 @@
 - jazykové mutace
 - obrázky do administrace
 - různé pozadí pro sudé a liché řádky v tabulkách
+- překlady titulků ve formulářích
 
 # Poznámky
 - běží to na Savaně (zachovat kvůli e-mailům)

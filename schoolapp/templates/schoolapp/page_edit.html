@@ -3,6 +3,8 @@
 
 {% block content %}
     <h2>Editace statické stránky:</h2>
+
+    <p>Kód odkazu na tuto stránku: <code>[text odkazu](/strana/{{ page.pk }})</code></p>
     
     <form method="POST" class="form-page" action="./">
         {% csrf_token %}

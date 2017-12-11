@@ -23,7 +23,7 @@
             {% for file in files %}
                 <tr>
                     <td><a href="{{ file.file.url }}" target="_blank">{{ file }}</a></td>
-                    <td>[text odkazu]({{ file.file.url }})</td>
+                    <td><code>[text odkazu]({{ file.file.url }})</code></td>
                     <td><a href="{% url 'file_remove' pk=file.pk %}"><span class="glyphicon glyphicon-trash"></span></a></td>
                 </tr>
             {% endfor %}

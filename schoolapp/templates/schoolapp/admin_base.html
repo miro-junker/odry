@@ -17,20 +17,20 @@
 </head>
 <body>
 
-    <h1>Správa obsahu <a href="{% url 'homepage' %}" target="_blank">SŠ Odry</a> [<a href="{% url 'logout' %}">Odhlásit</a>]</h1>
+    <h1>Správa obsahu <a href="{% url 'news' %}" target="_blank">SŠ Odry</a> [<a href="{% url 'logout' %}">Odhlásit</a>]</h1>
 
     <div class="main">
 
         <aside class="overview">
             
-            <h2><a href="{% url 'homepage' %}" target="_blank">Aktuality</a></h2>
+            <h2><a href="{% url 'news' %}" target="_blank">Aktuality</a></h2>
 
             <ul>
                 <li><a href="{% url 'news_new' %}"><span class="glyphicon glyphicon-plus"></span> Přidat aktualitu</a></li>
             </ul>
 
             <table>
-                {% for news in newss %}
+                {% for news in navigator_items.news %}
                     <tr>
                         <td><a href="{% url 'news_detail' pk=news.pk %}" target="_blank"><span class="glyphicon glyphicon-new-window"></span></a></td>
                         <td>
@@ -54,7 +54,7 @@
             </ul>
             
             <table>
-                {% for event in events %}
+                {% for event in navigator_items.event %}
                     <tr>
                         <td>
                             <a href="{% url 'event' pk=event.pk %}" target="_blank"><span class="glyphicon glyphicon-new-window"></span></a>
@@ -80,7 +80,7 @@
             </ul>
             
             <table>
-                {% for gallery in gallerys %}
+                {% for gallery in navigator_items.gallery %}
                     <tr>
                         <td>
                             <a href="{% url 'gallery_detail' pk=gallery.pk %}" target="_blank"><span class="glyphicon glyphicon-new-window"></span></a>
@@ -103,7 +103,7 @@
             <h2>Statické stránky</h2>
 
             <table>
-                {% for page in pages %}
+                {% for page in navigator_items.page %}
                     <tr>
                         <td>
                             <a href="{% url 'page' pk=page.pk %}" target="_blank"><span class="glyphicon glyphicon-new-window"></span></a>
@@ -111,7 +111,6 @@
                         <td>
                             {{ page.title }}
                         </td>
-                        <td>{{ page.pk }}</td>
                         <td>
                             <a href="{% url 'page_edit' pk=page.pk %}" class="btn-edit"><span class="glyphicon glyphicon-edit"></span></a>
                         </td>

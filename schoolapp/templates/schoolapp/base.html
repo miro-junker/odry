@@ -23,14 +23,14 @@
         <input class="header__search" type="text" value="Vyhledat...">
 
         <img class="header__logo" src="{% static 'img/logo-min.png' %}">
-        <h1 class="header__heading"><a href="{% url 'homepage' %}">Střední škola, Odry, <small>příspěvková organizace</small></a></h1>
+        <h1 class="header__heading"><a href="{% url 'news' %}">Střední škola, Odry, <small>příspěvková organizace</small></a></h1>
         <address class="header__address">Sokolovská 647/1, 742 35 Odry</address>
 
     </header>
                     
     <nav class="nav">      
         <ul>
-            <li><a href="{% url 'homepage' %}">Aktuálně</a></li>
+            <li><a href="{% url 'news' %}">Aktuálně</a></li>
             <li><a href="{% url 'calendar_summary' %}">Akce školy</a></li>
             <li><a href="{% url 'page' pk=3 %}">Studium</a></li>
             <li><a href="{% url 'page' pk=25 %}">Domov mládeže</a></li>

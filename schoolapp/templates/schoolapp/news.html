@@ -28,16 +28,16 @@
     <div class="pagination">
         {% if news_list.has_previous %}
             {% if news_list.previous_page_number == 1 %}
-                <a href="{% url 'homepage' %}">předchozí</a>
+                <a href="{% url 'news' %}">předchozí</a>
             {% else %}
-                <a href="{% url 'homepage_page' page=news_list.previous_page_number %}">předchozí</a>
+                <a href="{% url 'news_page' page=news_list.previous_page_number %}">předchozí</a>
             {% endif %}
         {% endif %}
 
         <strong>Strana {{ news_list.number }} z {{ news_list.paginator.num_pages }}</strong>
 
         {% if news_list.has_next %}
-            <a href="{% url 'homepage_page' page=news_list.next_page_number %}">následující</a>
+            <a href="{% url 'news_page' page=news_list.next_page_number %}">následující</a>
         {% endif %}
     </div>
 
