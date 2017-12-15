@@ -1,30 +1,41 @@
-*:not(img), *:before, *:after
-  box-sizing: inherit
+// FUNDAMENTAL DECLARATIONS
+// this version is designed for use over twitter bootstrap v4
 
 html
-  box-sizing: border-box
   height: 100%
-  body
-    margin: 0
-    height: 100%
+
+body
+  margin: 0
+  height: 100%
 
 img
+  display: block
   max-width: 100%
 
+td, th
+  text-align: left
+  vertical-align: top
+
+h1, h2, h3, h4, h5, h6
+  font-size: inherit
+
+h1, h2, h3, h4, h5, h6, p, ol, ul, hr, address
+  margin: 0
+  line-height: normal
+
+ul, ol
+  margin-top: 0
+  margin-bottom: 0
+  margin-right: 0
+
 // cursor
-p, ul, blockquote, h2, h3, footer strong
-  cursor: default
-a, button, label
+label, button
   cursor: pointer
+
+p, ul, ol, blockquote, h1, h2, h3, h4, h5, h6
+  //cursor: default
+
 
 img.center
   margin-left: auto
   margin-right: auto
-  display: block
-
- 
-
-
-// vertical spaces
-p, ul, ol, h1, h2, h3, h4, h5, h6
-  margin-top: 0

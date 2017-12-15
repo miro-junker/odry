@@ -1,46 +1,35 @@
-.header
-  padding: $space-header_inner $space-header_inner_horizontal
-  +clearfix
-  .header__logo
-    float: left
-    margin-right: $space-logo_right
+body
+  background: $color-bootstrapFaded
 
-  .header__heading
-  .header__search
-    float: right
+.container
+  background: white
 
 .nav
+  background: $color-bootstrapInverted
   ul
-    background: $color-main
     +not-list
+    //width: 100%
+    display: flex
+    justify-content: center
     text-align: center
-    font-size: 1.3rem
-    font-weight: bold
-    font-size: 0px
+    border-left: 1px solid white
     li
-      display: inline-block
+      flex: 1
+    i
+      display: block
+      font-size: 30px
+    a
+      display: block 
+      background-color: $color-bootstrapWarning
+      min-height: 100% 
       border-right: 1px solid white
-      font-size: 1rem
+      color: white
+      padding-top: 10px
+      padding-bottom: 10px
       &:hover
-        background-color: $color-secondary
-        a
-          color: white
-      &:last-child
-        border-right: none
-      padding: 10px 15px
-      a
-        color: black
         text-decoration: none
 
-.section
-  .section__wrapper
-    max-width: $width-content
-    padding: $space-side
-    margin-left: auto
-    margin-right: auto
+
 
 .footer
-  padding: $space-header-inner
-  background: $color-darkgrey
-  color: white
-  text-align: center
+  background: $color-bootstrapFaded

@@ -1,3 +1,6 @@
+# Design
+- do hlavičky foto studentů
+
 # Todo
 - bootstrap 4
 - frontend
@@ -7,11 +10,13 @@
 - search google
 
 # Fáze 2
+- homepage: carousel, novinky, shortcut odkazy, nejbližší událost, sudý/lichý týden, svátek
 - favicon
+- mapa
 - zpětné odkazy z detail-stránek (aktualita, událost, galerie)
 - vlastní fotogalerie, nahrávání fotek
 - videa
-- vyhledávání
+- vlastní vyhledávání
 - potvrzení při mazání
 - tabulky (markdown)
 - h1 odkaz nikoliv z homepage
@@ -19,6 +24,7 @@
 - české url na login
 - rychloodkazy z webu do administrace pro přihlášené
 - bootstrap 4 v administraci
+- zvýraznit dnešek v kalendáři
 
 # Fáze 3
 - drobečková navigace? (jak vyřešit hierarchii statických stránek?)

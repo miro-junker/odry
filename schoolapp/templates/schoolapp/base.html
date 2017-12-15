@@ -1,4 +1,5 @@
 {% load staticfiles %}
+{% load random_numbers %}
 
 <!DOCTYPE html>
 <html>
@@ -8,61 +9,66 @@
         {% block title %}{% endblock %} | Střední škola Odry
     </title>
     
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
     
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-	<link rel="stylesheet" href="{% static 'style/index.min.css' %}">
+	<link rel="stylesheet" href="{% static 'style/index.css' %}">
 </head>
 <body>
 
-    <header class="header">
+    <header class="header header--{% random_int 1 7 %}">
+        <div class="container">
+            <div class="search">
+                <form method="GET" action="https://www.google.cz/search">
+                    <input type="text" name="q" placeholder="Vyhledat" class="form-control">
+                    <input type="hidden" name="as_sitesearch" value="ssodry.cz">
+                    <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
+                </form>
+            </div>
 
-        <form method="GET" action="https://www.google.cz/search">
-            <input class="header__search" name="q" type="text" placeholder="Vyhledat">
-            <input type="hidden" name="as_sitesearch" value="ssodry.cz">
-            <button type="submit"><i class="fa fa-search"></i></button>
-        </form>
-
-        <img class="header__logo" src="{% static 'img/logo-min.png' %}">
-        <h1 class="header__heading"><a href="{% url 'news' %}">Střední škola, Odry, <small>příspěvková organizace</small></a></h1>
-        <address class="header__address">Sokolovská 647/1, 742 35 Odry</address>
-
+            <img class="header__logo" src="{% static 'img/logo-min.png' %}">
+            <h1 class="header__heading"><a href="{% url 'news' %}">Střední škola, Odry, <small>příspěvková organizace</small></a></h1>
+            <address class="header__address">Sokolovská 647/1, 742 35 Odry</address>
+        </div>
     </header>
                     
-    <nav class="nav">      
-        <ul>
-            <li><a href="{% url 'news' %}">Aktuálně</a></li>
-            <li><a href="{% url 'calendar_summary' %}">Akce školy</a></li>
-            <li><a href="{% url 'page' pk=3 %}">Studium</a></li>
-            <li><a href="{% url 'page' pk=25 %}">Domov mládeže</a></li>
-            <li><a href="{% url 'page' pk=17 %}">Služby pro veřejnost</a></li>
-            <li><a href="{% url 'gallery' %}">Foto a video</a></li>
-            <li><a href="{% url 'page' pk=28 %}">Úřední deska</a></li>
-            <li><a href="{% url 'page' pk=31 %}">Formuláře</a></li>
-            <li><a href="{% url 'page' pk=30 %}">Kontakty</a></li>
-        </ul>
+    <nav class="nav">    
+        <div class="container">  
+            <ul>
+                <li><a href="{% url 'news' %}"><i class="fa fa-newspaper-o"></i> Aktuálně</a></li>
+                <li><a href="{% url 'calendar_summary' %}"><i class="fa fa-calendar"></i> Akce školy</a></li>
+                <li><a href="{% url 'page' pk=3 %}"><i class="fa fa-graduation-cap"></i> Studium</a></li>
+                <li><a href="{% url 'page' pk=25 %}"><i class="fa fa-bed"></i> Domov mládeže</a></li>
+                <li><a href="{% url 'page' pk=17 %}"><i class="fa fa-handshake-o"></i> Služby pro veřejnost</a></li>
+                <li><a href="{% url 'gallery' %}"><i class="fa fa-camera"></i> Foto a&nbsp;video</a></li>
+                <li><a href="{% url 'page' pk=28 %}"><i class="fa fa-info-circle"></i> Úřední deska</a></li>
+                <li><a href="{% url 'page' pk=31 %}"><i class="fa fa-file-text-o"></i> Formuláře</a></li>
+                <li><a href="{% url 'page' pk=30 %}"><i class="fa fa-phone"></i> Kontakty</a></li>
+            </ul>
+        </div>
     </nav>
 
     <section class="section">
-        <div class="section__wrapper">
+        <div class="container">
             {% block content %}{% endblock %}
         </div>
     </section>
 
     <footer class="footer">
+        <div class="container">
+            <!-- odkaz na fb
+            nějaké dlaždice
+            logo města odry (asi vlevo)
+            loga Erasmus plus, Moravskoslezský kraj, Operační program Výzkum, vývoj a vzdělávání (EU)
+            jedna fotka -->
 
-        <!-- odkaz na fb
-        nějaké dlaždice
-        logo města odry (asi vlevo)
-        loga Erasmus plus, Moravskoslezský kraj, Operační program Výzkum, vývoj a vzdělávání (EU)
-        jedna fotka -->
-
-        <p>&copy; Střední škola, Odry, příspěvková organizace 2017</p>
-        <p>Sokolovská 647/1, 742 35 Odry</p>
-        <a href="{% url 'login' %}"><span class="glyphicon glyphicon-lock"></span></a>
-        <a href="{% url 'admin' %}"><span class="glyphicon glyphicon-pencil"></span></a>
+            <p>&copy; Střední škola, Odry, příspěvková organizace 2017</p>
+            <p>Sokolovská 647/1, 742 35 Odry</p>
+            <a href="{% url 'login' %}"><i class="fa fa-lock"></i></span></a>
+            <a href="{% url 'admin' %}"><i class="fa fa-pencil-square-o"></i></a>
+        </div>
     </footer>
 
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>

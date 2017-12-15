@@ -1,5 +1,10 @@
-.clear
-  clear: both
+=for-max($size)
+  @media (max-width: $size)
+    @content
+
+=for-min($size)
+  @media (min-width: $size)
+    @content
 
 =not-list
   list-style-type: none
