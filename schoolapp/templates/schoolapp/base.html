@@ -18,19 +18,21 @@
 </head>
 <body>
 
-    <header class="header header--{% random_int 1 7 %}">
+    <header class="header">
         <div class="container">
-            <div class="search">
-                <form method="GET" action="https://www.google.cz/search">
-                    <input type="text" name="q" placeholder="Vyhledat" class="form-control">
-                    <input type="hidden" name="as_sitesearch" value="ssodry.cz">
-                    <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
-                </form>
-            </div>
+            <div class="content bg-{% random_int 1 7 %}">
+                <div class="search">
+                    <form method="GET" action="https://www.google.cz/search">
+                        <input type="text" name="q" placeholder="Vyhledat" class="form-control">
+                        <input type="hidden" name="as_sitesearch" value="ssodry.cz">
+                        <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
+                    </form>
+                </div>
 
-            <img class="header__logo" src="{% static 'img/logo-min.png' %}">
-            <h1 class="header__heading"><a href="{% url 'news' %}">Střední škola, Odry, <small>příspěvková organizace</small></a></h1>
-            <address class="header__address">Sokolovská 647/1, 742 35 Odry</address>
+                <img class="header__logo" src="{% static 'img/logo-min.png' %}">
+                <h1 class="header__heading"><a href="{% url 'news' %}">Střední škola, Odry, <small class="text-muted">příspěvková organizace</small></a></h1>
+                <address class="header__address">Sokolovská 647/1, 742 35 Odry</address>
+            </div>
         </div>
     </header>
                     

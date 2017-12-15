@@ -12,9 +12,10 @@ body
     display: flex
     justify-content: center
     text-align: center
-    border-left: 1px solid white
     li
       flex: 1
+      &:last-child a
+        border-right: none
     i
       display: block
       font-size: 30px
@@ -28,6 +29,7 @@ body
       padding-bottom: 10px
       &:hover
         text-decoration: none
+
 
 .content
   .container

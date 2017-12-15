@@ -7,20 +7,28 @@
 {% block content %}
     <h2>Aktuálně</h2>
     {% for news in news_list %}
-        <div class="news">
-            <h3>
-                <a href="{% url 'news_detail' pk=news.pk %}">
-                    {{ news.title }}
-                </a>
-                <time>
-                    {{ news.date|date:'d.m.Y' }}
-                </time>
-            </h3>
-            <img src="{{ news.picture.url }}" alt="{{ news.title }}">
-            <p>
-                {{ news.perex }}
-            </p>
-            <a href="{% url 'news_detail' pk=news.pk %}">Celá zpráva &raquo;</a>
+        <div class="news box">
+            <div class="news__content">
+                <h3>
+                    <a href="{% url 'news_detail' pk=news.pk %}">
+                        {{ news.title }}
+                    </a>
+                    <time class="text-muted">
+                        {{ news.date|date:'d.m.Y' }}
+                    </time>
+                </h3>
+                <p class="news__perex">
+                    {{ news.perex }}
+                </p>
+                <div class="news__cta">
+                    <a href="{% url 'news_detail' pk=news.pk %}" class="btn btn-outline-info" role="button">
+                        Celá zpráva <i class="fa fa-share"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="news__picture">
+                <img src="{{ news.picture.url }}" alt="{{ news.title }}">
+            </div>
         </div>
     {% endfor %}
 

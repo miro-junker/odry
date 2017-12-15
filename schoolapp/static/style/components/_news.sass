@@ -1,5 +1,36 @@
 .news
-    background: red
-    margin-bottom: 40px
+    $space-inbox: 20px
+
+    margin-bottom: 30px
+    padding: $space-inbox
+    border: 1px solid $color-border 
+    border-radius: 30px
+    max-width: 800px
+    margin-left: auto
+    margin-right: auto
+    display: flex
+
+    .news__content
+        flex-grow: 1
+        margin-right: $space-inbox
+        display: flex
+        flex-direction: column
+
+    .news__perex
+        flex-grow: 1
+
+    time
+        display: block
+        margin-bottom: 15px
     img
-        max-width: 300px
+        @extend .photo
+
+    &:nth-child(2n)
+        .news__content
+            order: 2
+            margin-right: 0
+            margin-left: $space-inbox
+            .news__cta
+                text-align: right 
+        .news__picture
+            order: 1 
