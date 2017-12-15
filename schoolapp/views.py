@@ -11,7 +11,7 @@ from .models import News, Event, Gallery, Page, File
 from .forms import NewsForm, EventForm, GalleryForm, PageForm, FileForm
 
 
-pagination_per_page = 8
+pagination_per_page = 7
 pagination_orphans = 1
 
 

@@ -5,6 +5,9 @@
 - bootstrap 4
 - frontend
 
+# Refactor
+- udělat nějaké makro z pagination
+
 # Fáze 1
 - fotogalerie = externí služba (např. rajče)
 - search google

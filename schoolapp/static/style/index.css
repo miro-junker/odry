@@ -63,8 +63,9 @@ body {
       .nav ul a:hover {
         text-decoration: none; }
 
-.footer {
-  background: #F7F7F7; }
+.content .container {
+  padding-top: 30px;
+  padding-bottom: 60px; }
 
 .header .container {
   background: white url("/static/img/header1.jpg") right top no-repeat scroll;
@@ -88,7 +89,21 @@ body {
 .header--7 .container {
   background-image: url("/static/img/header7.jpg"); }
 
+.footer {
+  background: #292B2C;
+  padding-top: 50px;
+  padding-bottom: 100px; }
+  .footer .container {
+    background: #292B2C;
+    color: white; }
+
 .search form {
   display: flex; }
+
+.news {
+  background: red;
+  margin-bottom: 40px; }
+  .news img {
+    max-width: 300px; }
 
 /*# sourceMappingURL=index.css.map */

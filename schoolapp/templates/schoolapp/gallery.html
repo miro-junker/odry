@@ -28,20 +28,30 @@
     {% endfor %}
 
 
-    <div class="pagination">
-        {% if gallery_list.has_previous %}
-            {% if gallery_list.previous_page_number == 1 %}
-                <a href="{% url 'gallery' %}">předchozí</a>
+    <ul class="pagination justify-content-center">
+            {% if gallery_list.has_previous %}
+                {% if gallery_list.previous_page_number == 1 %}
+                    <li class="page-item"><a class="page-link" href="{% url 'gallery' %}">předchozí</a></li>
+                {% else %}
+                    <li class="page-item"><a class="page-link" href="{% url 'gallery_page' page=gallery_list.previous_page_number %}">předchozí</a></li>
+                {% endif %}
             {% else %}
-                <a href="{% url 'gallery_page' page=gallery_list.previous_page_number %}">předchozí</a>
+                <li class="page-item disabled"><a class="page-link" href="{% url 'gallery' %}">předchozí</a></li>
             {% endif %}
-        {% endif %}
-
-        <strong>Strana {{ gallery_list.number }} z {{ gallery_list.paginator.num_pages }}</strong>
-
-        {% if gallery_list.has_next %}
-            <a href="{% url 'gallery_page' page=gallery_list.next_page_number %}">následující</a>
-        {% endif %}
-    </div>
+    
+            {% for page in gallery_list.paginator.page_range %}
+                {% if page == 1 %}
+                    <li class="page-item{% if page == gallery_list.number %} active{% endif %}"><a class="page-link" href="{% url 'gallery' %}">{{ page }}</a></li>
+                {% else %}
+                    <li class="page-item{% if page == gallery_list.number %} active{% endif %}"><a class="page-link" href="{% url 'gallery_page' page=page %}">{{ page }}</a></li>
+                {% endif %}
+            {% endfor %}
+    
+            {% if gallery_list.has_next %}
+                <li class="page-item"><a class="page-link" href="{% url 'gallery_page' page=gallery_list.next_page_number %}">následující</a></li>
+            {% else %}
+                <li class="page-item disabled"><a class="page-link" href="#">následující</a></li>
+            {% endif %}
+        </ul>
 
 {% endblock %}

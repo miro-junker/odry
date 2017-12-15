@@ -25,20 +25,30 @@
     {% endfor %}
 
 
-    <div class="pagination">
+    <ul class="pagination justify-content-center">
         {% if news_list.has_previous %}
             {% if news_list.previous_page_number == 1 %}
-                <a href="{% url 'news' %}">předchozí</a>
+                <li class="page-item"><a class="page-link" href="{% url 'news' %}">předchozí</a></li>
             {% else %}
-                <a href="{% url 'news_page' page=news_list.previous_page_number %}">předchozí</a>
+                <li class="page-item"><a class="page-link" href="{% url 'news_page' page=news_list.previous_page_number %}">předchozí</a></li>
             {% endif %}
+        {% else %}
+            <li class="page-item disabled"><a class="page-link" href="{% url 'news' %}">předchozí</a></li>
         {% endif %}
 
-        <strong>Strana {{ news_list.number }} z {{ news_list.paginator.num_pages }}</strong>
+        {% for page in news_list.paginator.page_range %}
+            {% if page == 1 %}
+                <li class="page-item{% if page == news_list.number %} active{% endif %}"><a class="page-link" href="{% url 'news' %}">{{ page }}</a></li>
+            {% else %}
+                <li class="page-item{% if page == news_list.number %} active{% endif %}"><a class="page-link" href="{% url 'news_page' page=page %}">{{ page }}</a></li>
+            {% endif %}
+        {% endfor %}
 
         {% if news_list.has_next %}
-            <a href="{% url 'news_page' page=news_list.next_page_number %}">následující</a>
+            <li class="page-item"><a class="page-link" href="{% url 'news_page' page=news_list.next_page_number %}">následující</a></li>
+        {% else %}
+            <li class="page-item disabled"><a class="page-link" href="#">následující</a></li>
         {% endif %}
-    </div>
+    </ul>
 
 {% endblock %}
