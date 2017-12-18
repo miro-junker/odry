@@ -49,20 +49,31 @@
     </p>
 
 
-    {# Nejbližší akce #}
+    {# Earliest event #}
     
-    <div class="event">
-        <h3>
-            Nejbližší akce:
+    <div class="event box">
+        <div class="box__content">
+            <h3>
+                Nejbližší událost:
+                <a href="{% url 'event' pk=earliest.pk %}">
+                    {{ earliest.title }}
+                </a>
+                <time class="text-muted">
+                    {{ earliest.since|date:'d.m.Y' }} - {{ earliest.to|date:'d.m.Y' }}
+                </time>
+            </h3>
+            <p class="box__perex">
+                {{ earliest.info }}
+            </p>
+            <div class="box__cta">
+                <a href="{% url 'event' pk=earliest.pk %}" class="btn btn-outline-info" role="button">
+                    Více o události <i class="fa fa-share"></i>
+                </a>
+            </div>
+        </div>
+        <div class="box__picture">
             <img src="{{ earliest.picture.url }}" alt="{{ earliest.title }}">
-            <a href="{% url 'event' pk=earliest.pk %}">{{ earliest.title }}</a>
-            ({{ earliest.since|date:'d.m.Y' }} - {{ earliest.to|date:'d.m.Y' }})
-        </h3>
-        <p>
-            {{ earliest.info }}
-        </p>
-        <a href="{% url 'event' pk=earliest.pk %}">Více o události</a>
+        </div> 
     </div>
-    
 
 {% endblock %}

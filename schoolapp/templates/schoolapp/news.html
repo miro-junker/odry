@@ -8,7 +8,7 @@
     <h2>Aktuálně</h2>
     {% for news in news_list %}
         <div class="news box">
-            <div class="news__content">
+            <div class="box__content">
                 <h3>
                     <a href="{% url 'news_detail' pk=news.pk %}">
                         {{ news.title }}
@@ -17,18 +17,18 @@
                         {{ news.date|date:'d.m.Y' }}
                     </time>
                 </h3>
-                <p class="news__perex">
+                <p class="box__perex">
                     {{ news.perex }}
                 </p>
-                <div class="news__cta">
+                <div class="box__cta">
                     <a href="{% url 'news_detail' pk=news.pk %}" class="btn btn-outline-info" role="button">
                         Celá zpráva <i class="fa fa-share"></i>
                     </a>
                 </div>
             </div>
-            <div class="news__picture">
+            <div class="box__picture">
                 <img src="{{ news.picture.url }}" alt="{{ news.title }}">
-            </div>
+            </div> 
         </div>
     {% endfor %}
 
