@@ -7,15 +7,20 @@
 {% block content %}
 
     <h2>{{ event.title }}</h2>
-    <time>
+    <time class="event__time">
         Začátek: {{ event.since|date:'d.m.Y' }}<br>
         Konec: {{ event.to|date:'d.m.Y' }}
     </time>
 
-    <img src="{{ event.picture.url }}" alt="{{ event.title }}">
+    <img class="event__picture" src="{{ event.picture.url }}" alt="{{ event.title }}">
     
-    <p>
+    <div class="event__content markdown">
         {{ info_html|safe }}
-    </p>
+    </div>
+
+    <a href="{% url 'calendar_summary' %}" class="btn btn-primary">
+        <i class="fa fa-reply"></i>
+        Zpět na kalendář
+    </a>
 
 {% endblock %}

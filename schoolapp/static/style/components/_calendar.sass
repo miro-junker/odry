@@ -1,0 +1,42 @@
+.calendar
+    width: 100%
+    margin-bottom: 30px
+
+    tr
+
+    th
+        background: $color-bootstrapInverted 
+        color: white
+
+    td, th
+        border: 1px solid gray
+        padding: 5px
+        text-align: center 
+
+
+
+    ul
+        +not-list
+        a
+            background: $color-bootstrapWarning
+            color: white
+            padding: 3px
+            display: block
+            // width: 100%
+            text-align: left 
+            margin-bottom: 3px
+
+    .calendar__week
+        background: $color-bootstrapInfo
+        color: white
+        em
+            display: block
+            font-size: 200%
+            
+    h4
+        text-align: right
+
+    
+.calendar__pagination
+    margin-bottom: 30px
+    text-align: center

@@ -29,7 +29,7 @@
                 </div>
             </div>
             <div class="box__picture">
-                <img src="{{ gallery.picture.url }}" alt="{{ gallery.title }}">
+                <a href="{{ gallery.path }}" target="blank"><img src="{{ gallery.picture.url }}" alt="{{ gallery.title }}"></a>
             </div>
         </div>
     {% endfor %}

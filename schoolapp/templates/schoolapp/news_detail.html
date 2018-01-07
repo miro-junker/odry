@@ -6,16 +6,23 @@
 
 {% block content %}
     <h2>{{ news.title }}</h2>
-    <time>{{ news.date|date:'d.m.Y' }}</time>
+    <time class="news__time">{{ news.date|date:'d.m.Y' }}</time>
 
-    <img src="{{ news.picture.url }}" alt="{{ news.title }}">
+    <img class="news__picture" src="{{ news.picture.url }}" alt="{{ news.title }}">
     
-    <p>
+    <p class="news__perex">
         {{ news.perex }}
     </p>
 
     <hr>
 
-    {{ content_html|safe }}
+    <div class="news__content markdown">
+        {{ content_html|safe }}
+    </div>
+
+    <a href="{% url 'news' %}" class="btn btn-primary">
+        <i class="fa fa-reply"></i>
+        Zpět na novinky
+    </a>
 
 {% endblock %}

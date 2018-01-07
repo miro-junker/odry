@@ -1,9 +1,16 @@
 # Design
 - do hlavičky foto studentů
+- do patičky loga sponzorů
 
 # Todo
-- bootstrap 4
-- frontend
+- h1 / h2 / h3 (/ h4 / h5 / h6)
+- značka u odkazů, které vedou ven
+- transitions
+- vycentrovat text v menu
+- hezčí h2 nadpis?
+- loga do patičky
+- font-size, line-height, perex color
+- knihoviny i lokálně
 
 # Refactor
 - udělat nějaké makro z pagination
@@ -40,6 +47,7 @@
 - obrázky do administrace
 - různé pozadí pro sudé a liché řádky v tabulkách
 - překlady titulků ve formulářích
+- návod do administrace
 
 # Poznámky
 - běží to na Savaně (zachovat kvůli e-mailům)
@@ -53,3 +61,36 @@
 
 # Deploy
 - `pip install Pillow` - obrázková knihovna
+
+# Instalace Windows
+- spustit konzoli jako root
+- pip install Django==1.11.5
+- pip install Pillow
+- pip install markdown
+- pip install django-bleach
+
+- python manage.py createsuperuser
+
+- problém s odlášeným účtem
+
+# Instalace Debian
+- apt-get install git
+virtualenv --python=python3.4 myvenv
+- apt-get install python-pip
+- pip install virtualenv
+- apt-get install python3-venv
+- source prod_venv/bin/activate
+- pip install Django==1.11.5
+- pip install markdown
+- pip install django-bleach
+- pip install Pillow
+(- pip install whitenoise -tj. knihovna na staticke soubory)
+python manage.py collectstatic
+
+
+zvážit:
+turnkey core
+ShellInBox, Django Administration Console
+SSL
+iPython?
+Webmin (configuring Apache2 & MySQL)

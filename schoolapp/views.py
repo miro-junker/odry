@@ -211,7 +211,8 @@ def gallery_edit(request, pk):
         form = GalleryForm(request.POST, request.FILES, instance=gallery)
         if form.is_valid():
             gallery_data = form.save()
-            return redirect('gallery_detail', pk=gallery_data.pk)
+            # return redirect('gallery_detail', pk=gallery_data.pk)
+            return redirect('gallery')
     else:
         form = GalleryForm(instance=gallery)
     return render(request, 'schoolapp/gallery_edit.html', {'navigator_items':get_navigator_items(), 'form':form, 'gallery':gallery})

@@ -7,6 +7,8 @@
 {% block content %}
     <h2>{{ page.title }}</h2>
     
-    {{ content_html|safe }}
+    <div class="markdown">
+        {{ content_html|safe }}
+    </div>
 
 {% endblock %}

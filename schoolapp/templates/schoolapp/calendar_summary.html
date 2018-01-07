@@ -21,12 +21,12 @@
 
         {% for week in calendar_data %}
             <tr>
-                <td>
-                    <em>{{ week.number }}</em>
+                <td class="calendar__week">
+                    <em>{{ week.number }}.</em>
                     {% if week.number|divisibleby:2 %}
-                        (sudý)
+                        sudý
                     {% else %}
-                        (lichý)
+                        lichý
                     {% endif %}
                 </td>
                 {% for day in week.days %}
@@ -43,11 +43,18 @@
         {% endfor %}
     </table>
 
-    <p>
-        <a href="{% url 'calendar_month' year=nav.prevYear month=nav.prevMonth %}">Předchozí měsíc ({{ nav.prevMonth }} / {{ nav.prevYear }})</a> |
-        <a href="{% url 'calendar_month' year=nav.nextYear month=nav.nextMonth %}">Následující měsíc ({{ nav.nextMonth }} / {{ nav.nextYear }})</a>
+    <p class="calendar__pagination">
+        <a href="{% url 'calendar_month' year=nav.prevYear month=nav.prevMonth %}" class="btn btn-primary">
+            <i class="fa fa-reply"></i>
+            Předchozí měsíc ({{ nav.prevMonth }} / {{ nav.prevYear }})
+        </a>
+        <a href="{% url 'calendar_month' year=nav.nextYear month=nav.nextMonth %}" class="btn btn-primary">
+            Následující měsíc ({{ nav.nextMonth }} / {{ nav.nextYear }})
+            <i class="fa fa-share"></i>
+        </a>
     </p>
 
+    <hr>
 
     {# Earliest event #}
     
@@ -72,7 +79,7 @@
             </div>
         </div>
         <div class="box__picture">
-            <img src="{{ earliest.picture.url }}" alt="{{ earliest.title }}">
+            <a href="{% url 'event' pk=earliest.pk %}"><img src="{{ earliest.picture.url }}" alt="{{ earliest.title }}"></a>
         </div> 
     </div>
 
