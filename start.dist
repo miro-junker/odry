@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# set runtime variables
+DJANGO_SECRET_KEY="doplnit"
+DJANGO_DEBUG="False"
