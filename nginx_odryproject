@@ -1,9 +1,19 @@
 server {
     listen 80;
-    server_name 192.168.0.200;
+    server_name ssodry.cz www.ssodry.cz odry.loc 85.135.97.210;
 
-    location = /favicon.ico { access_log off; log_not_found off; }
+    client_max_body_size 30M;
+
+    location = /favicon.ico {
+        access_log off;
+        log_not_found off;
+    }
+    
     location /static/ {
+        root /home/pi/odry/program;
+    }
+
+    location /media/ {
         root /home/pi/odry/program;
     }
 
