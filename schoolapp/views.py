@@ -91,8 +91,8 @@ def calendar_summary(request, year=False, month=False):
     }
     # get earliest event
     now = timezone.now()
-    earliest = Event.objects.all().filter(to__gt=now).order_by('since')[0]
-    print(earliest)
+    earliest_list = Event.objects.all().filter(to__gt=now).order_by('since')
+    earliest = earliest_list[0] if len(earliest_list) else False
     return render(request, 'schoolapp/calendar_summary.html', {'calendar_data':calendar_data, 'year':year, 'month':month, 'nav':nav, 'earliest':earliest})
 
 

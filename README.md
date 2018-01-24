@@ -68,10 +68,7 @@
 
 # Instalace development (Windows)
 - spustit konzoli jako root
-- pip install Django==1.11.5
-- pip install Pillow
-- pip install markdown
-- pip install django-bleach
+- pip install Django==1.11.5 Pillow markdown django-bleach whitenoise
 
 - python manage.py createsuperuser
 
