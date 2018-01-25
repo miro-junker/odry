@@ -2,21 +2,21 @@
 - do patičky loga sponzorů
 
 # Todo
-- nastavit někam jinam SECURITY_KEY a DEBUG
 - do patičky loga
 - kontejner min-width pro mobily
-- zapojit server
 - nasměrovat DNS
-- ošetřit 0 záznamů: callendar_summary 94. earliest = Event.objects.all().filter(to__gt=now).order_by('since')[0] 
 - h1 / h2 / h3 (/ h4 / h5 / h6)
+- hezčí h2 nadpis?
+- dostylovat loginpage
+
+- nastavit někam jinam SECURITY_KEY a DEBUG
 - značka u odkazů, které vedou ven
 - transitions
-- vycentrovat text v menu
-- hezčí h2 nadpis?
-- loga do patičky
+- vycentrovat vertikálně text v menu
 - font-size, line-height, perex color
+- detekovat / problém s odlášeným účtem
 - postgres na produkci? https://www.digitalocean.com/community/tutorials/how-to-set-up-django-with-postgres-nginx-and-gunicorn-on-ubuntu-16-04
-- nainstalovat ufw firewall
+- ufw firewall?
 
 # Refactor
 - udělat nějaké makro z pagination
@@ -56,23 +56,21 @@
 - různé pozadí pro sudé a liché řádky v tabulkách
 - překlady titulků ve formulářích
 - návod do administrace
+- vícejazyčné překlady?
 
 # Poznámky
-- Odry běží na Savaně (zachovat kvůli e-mailům)
+- ssodry.cz běží na Savaně (zachovat kvůli e-mailům)
 
 # Použití
-- aktivace prostředí: `venv/Scripts/activate`
-- spuštění serveru: `python manage.py runserver`
-- pro aktualizaci modelu: `python manage.py migrate schoolapp`
-- vytvoření admina: `python manage.py createsuperuser`
+- aktivace development prostředí: `venv/Scripts/activate`
+- spuštění develompment serveru: `python manage.py runserver`
+- aktualizace modelu: `python manage.py migrate schoolapp`
+- vytvoření admina: `python manage.py createsuperuser` (používat vždy username `admin`)
 
 # Instalace development (Windows)
 - spustit konzoli jako root
-- pip install Django==1.11.5 Pillow markdown django-bleach whitenoise
-
-- python manage.py createsuperuser
-
-- problém s odlášeným účtem
+- `pip install Django==1.11.5 Pillow markdown django-bleach whitenoise`
+- `python manage.py createsuperuser` (používat vzdy username `admin`)
 
 # Instalace production (Raspbian)
 - Raspberry Pi Configuration:
@@ -80,7 +78,7 @@
     enable ssh & vnc
     language cs, country cz
     timezone europe / prague
-- sudo apt-get update
+- `sudo apt-get update`
 - sudo apt-get -y install mc nginx (python3-pip python3-dev libpq-dev postgresql postgresql-contrib)
 - zkopírovat data do /home/odry/program
 - python3 -m venv pienv
@@ -103,7 +101,7 @@
 (- pokud mám ufw firewall, tak: sudo ufw 8000
     sudo ufw allow 'Nginx Full')
 
-- pokud bude třeba: vytvoření admina: `python manage.py createsuperuser`
+- pokud bude třeba vytvořit admina: `python manage.py createsuperuser` (používat vždy username `admin`)
 - zkontrolovat settings.py ALLOWED_HOSTS
 - nakonfigurovat SSL/TLS https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-16-04
 
