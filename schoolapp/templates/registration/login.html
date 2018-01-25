@@ -15,12 +15,14 @@
     <form method="post" action="{% url 'login' %}">
         {% csrf_token %}
         <table>
-            {#<tr>
-                <td>{{ form.username.label_tag }}</td>
-                <td>{{ form.username }}</td>
-            </tr>#}
+            {% comment %}
+                <tr>
+                    <td>{{ form.username.label_tag }}</td>
+                    <td>{{ form.username }}</td>
+                </tr>
+            {% endcomment %}
             <tr>
-                <td>Heslo:{#{{ form.password.label_tag }}#}</td>
+                <td>Heslo:{# {{ form.password.label_tag }} #}</td>
                 <td>{{ form.password }}</td>
             </tr>
         </table>
