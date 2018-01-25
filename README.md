@@ -3,11 +3,12 @@
 
 # Todo
 - do patičky loga
-- kontejner min-width pro mobily
 - nasměrovat DNS
 - h1 / h2 / h3 (/ h4 / h5 / h6)
 - hezčí h2 nadpis?
 - dostylovat loginpage
+
+- vyřešit logování
 
 - nastavit někam jinam SECURITY_KEY a DEBUG
 - značka u odkazů, které vedou ven

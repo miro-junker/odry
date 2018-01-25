@@ -29,7 +29,7 @@
                     </form>
                 </div>
 
-                <a href="{% url 'news' %}" title="Zpět na titulní stranu&hellip;"><img class="header__logo" src="{% static 'img/logo-min.png' %}"></a>
+                <a href="{% url 'news' %}" title="Zpět na titulní stranu&hellip;"><img class="header__logo" src="{% static 'img/logo-transparent.png' %}"></a>
                 <h1 class="header__heading"><a href="{% url 'news' %}" title="Zpět na titulní stranu&hellip;">Střední škola, Odry, <small class="text-muted">příspěvková organizace</small></a></h1>
                 <address class="header__address">Sokolovská 647/1, 742 35 Odry</address>
             </div>
@@ -68,8 +68,9 @@
 
             <p>&copy; Střední škola, Odry, příspěvková organizace 2017</p>
             <p>Sokolovská 647/1, 742 35 Odry</p>
-            <a href="{% url 'login' %}"><i class="fa fa-lock"></i></span></a>
-            <a href="{% url 'admin' %}"><i class="fa fa-pencil-square-o"></i></a>
+
+            {# <a href="{% url 'login' %}"><i class="fa fa-user-o"></i></a> #}       
+            <a href="{% url 'admin' %}"><i class="fa fa-lock"></i></a>
         </div>
     </footer>
 
