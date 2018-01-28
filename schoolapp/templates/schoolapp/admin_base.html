@@ -13,12 +13,15 @@
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
 
-	<link rel="stylesheet" href="{% static 'admin/index.min.css' %}">
+	<link rel="stylesheet" href="{% static 'admin/index.css' %}">
 </head>
 <body>
 
-    <h1>Správa obsahu <a href="{% url 'news' %}" target="_blank">SŠ Odry</a> [<a href="{% url 'logout' %}">Odhlásit</a>]</h1>
-
+    <header class="header">
+        <h1>Správa obsahu <a href="{% url 'news' %}" target="_blank">SŠ Odry</a></h1>
+        <a class="btn btn-primary" href="{% url 'logout' %}"><span class="glyphicon glyphicon-user"></span> Odhlásit</a>
+    </header>
+    
     <div class="main">
 
         <aside class="overview">
@@ -26,7 +29,7 @@
             <h2><a href="{% url 'news' %}" target="_blank">Aktuality</a></h2>
 
             <ul>
-                <li><a href="{% url 'news_new' %}"><span class="glyphicon glyphicon-plus"></span> Přidat aktualitu</a></li>
+                <li><a href="{% url 'news_new' %}" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Přidat aktualitu</a></li>
             </ul>
 
             <table>
@@ -52,7 +55,7 @@
             
             <h2><a href="{% url 'calendar_summary' %}" target="_blank">Události</a></h2>
             <ul>
-                <li><a href="{% url 'event_new' %}"><span class="glyphicon glyphicon-plus"></span> Přidat událost</a></li>
+                <li><a href="{% url 'event_new' %}" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Přidat událost</a></li>
             </ul>
             
             <table>
@@ -78,7 +81,7 @@
             
             <h2><a href="{% url 'gallery' %}" target="_blank">Galerie</a></h2>
             <ul>
-                <li><a href="{% url 'gallery_new' %}"><span class="glyphicon glyphicon-plus"></span> Přidat galerii</a></li>
+                <li><a href="{% url 'gallery_new' %}" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Přidat galerii</a></li>
             </ul>
             
             <table>
@@ -124,7 +127,8 @@
 
             <h2><a href="{% url 'file_edit' %}">Nahrané soubory</a></h2>
             <ul>
-                <li><a href="{% url 'file_edit' %}"><span class="glyphicon glyphicon-plus"></span> Nahrát nový soubor</a></li>
+                <li><a href="{% url 'file_edit' %}" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Nahrát nový soubor</a></li>
+                <li><br><a href="{% url 'file_edit' %}" class="btn btn-primary"><span class="glyphicon glyphicon-th-list"></span> Zobrazit nahrané soubory</a></li>
             </ul>
         
         </aside>
@@ -135,6 +139,10 @@
         </div>
 
     </div>
+
+    <footer class="footer">
+        {% include "./admin_help.html" %}
+    </footer>
 
     <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script> -->
     <script src="http://code.jquery.com/jquery.js"></script>

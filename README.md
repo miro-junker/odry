@@ -2,6 +2,7 @@
 - do patičky loga sponzorů
 
 # Todo
+- pojmenovat česky fields v administraci
 - do patičky loga
 - nasměrovat DNS
 - h1 / h2 / h3 (/ h4 / h5 / h6)
