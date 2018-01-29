@@ -118,6 +118,11 @@ body {
   @media (max-width: 991px) {
     .header h1 small {
       display: block; } }
+.header .header__sponsor {
+  position: absolute;
+  left: 235px;
+  top: 80px;
+  width: 200px; }
 .header .header__fb {
   position: absolute;
   top: 10px;
