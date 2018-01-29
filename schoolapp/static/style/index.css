@@ -82,6 +82,17 @@ body {
 
 .markdown p, .markdown h1, .markdown h2, .markdown h3, .markdown h4, .markdown h5, .markdown h6, .markdown ul, .markdown ol, .markdown hr {
   margin-bottom: 30px; }
+.markdown h1 {
+  font-size: 2rem;
+  text-align: lef;
+  font-weight: bold; }
+.markdown h2 {
+  font-size: 1.75rem;
+  text-align: left;
+  font-weight: bold; }
+.markdown h3 {
+  font-size: 1.3rem;
+  font-weight: bold; }
 
 .photo, .photo--small, .box img, .news__picture, .event__picture {
   box-shadow: 1px 1px 6px 0px rgba(0, 0, 0, 0.3);

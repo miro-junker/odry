@@ -16,6 +16,7 @@
     <tr>
         <td>
             <h3>Nadpisy</h3>
+            <p>Před textem nadpisu se napíše znak křížek (#) pro největší nadpis, případně 2-3 křížky za sebou pro menší nadpisy.</p>
         </td>
         <td>
             <code>
@@ -33,6 +34,7 @@
     <tr>
         <td>
             <h3>Seznamy</h3>
+            <p>Odrážkové seznamy mohou být buď s kulatými odrážkami nebo čísly - podle toho jsou uvedeny buď s hvězdičkou na začátku nebo s číslem, tečkou a mezerou.</p>
         </td>
         <td>
             <code>
@@ -60,7 +62,8 @@
     </tr>
     <tr>
         <td>
-            <h3>Text</h3>
+            <h3>Odstavcový text</h3>
+            <p>Většina informací se vkládá jako odstavce.</p>
         </td>
         <td>
             <code>
@@ -72,6 +75,21 @@
         <td>
             <p>Odstavce se oddělují prázdným řádkem.</p>
             <p>Na délce řádků nezáleží.</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <h3>Zalomení řádku</h3>
+            <p>Pokud chcete udělat zlom řádku v rámci odstavce (obdoba jednoho enteru ve Wordu), je třeba nechat na konci řádku pár mezer.</p>
+        </td>
+        <td>
+            <code>
+                Text, který obsahuje zlom<span style="background:yellow">&nbsp;&nbsp;&nbsp;</span><br>
+                Na konci předchozího řádku je pár mezer a tento text je již na druhé řádce, ale mezi oběma řádky není mezera, jaká je mezi 2 odstavci.
+            </code>
+        </td>
+        <td>
+            <p>Text, který obsahuje zlom<br>Na konci předchozího řádku je pár mezer a tento text je již na druhé řádce, ale mezi oběma řádky není mezera, jaká je mezi 2 odstavci.</p>
         </td>
     </tr>
     <tr>
@@ -93,10 +111,10 @@
             <p>Pokud se jedná o odkaz v rámci webu, tak je v administraci u každé stránky již předgenerovaný kód, který stačí zkopírovat a vložit.</p>
         </td>
         <td>
-            <code>[text odkazu](http://www.seznam.cz/)</code>
+            <code>[Text odkazu](http://www.seznam.cz/)</code>
         </td>
         <td>
-            <a href="http://www.seznam.cz" target="_blank">text odkazu</a>
+            <a href="http://www.seznam.cz" target="_blank">Text odkazu</a>
         </td>
     </tr>
     <!--<tr>

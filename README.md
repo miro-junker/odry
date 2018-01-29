@@ -2,11 +2,9 @@
 - do patičky loga sponzorů
 
 # Todo
-- loga do patičky
-    - vlevo logo města odry
-    - logo erasmu plus
-    - logo moravskoslezsky kraj
-    - logo operacni program vyzkum, vyvoj a vzdelavani (EU)
+- detekovat a vyřešit 500
+- lepší markdown parser (lepší BR)
+- odstranit z repo configy a db, nechat jen .dist (a dát do gitinore)
 - pojmenovat česky fields v administraci
 - do patičky loga
 - dát do adminu bootstrap 4 & font awesome
