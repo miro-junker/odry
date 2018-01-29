@@ -2,16 +2,22 @@
 - do patičky loga sponzorů
 
 # Todo
+- loga do patičky
+    - vlevo logo města odry
+    - logo erasmu plus
+    - logo moravskoslezsky kraj
+    - logo operacni program vyzkum, vyvoj a vzdelavani (EU)
 - pojmenovat česky fields v administraci
 - do patičky loga
+- dát do adminu bootstrap 4 & font awesome
 - nasměrovat DNS
 - h1 / h2 / h3 (/ h4 / h5 / h6)
 - hezčí h2 nadpis?
-- dostylovat loginpage
 
 - vyřešit logování
 
 - nastavit někam jinam SECURITY_KEY a DEBUG
+- zálohovat db & uploadované soubory
 - značka u odkazů, které vedou ven
 - transitions
 - vycentrovat vertikálně text v menu

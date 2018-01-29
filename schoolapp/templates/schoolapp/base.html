@@ -28,6 +28,7 @@
                         <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
                     </form>
                 </div>
+                <a class="header__fb" href="https://www.facebook.com/stredni.skola.odry/" target="_blank"><img src="{% static 'img/fb.png' %}" alt="facebook"></a>
 
                 <a href="{% url 'news' %}" title="Zpět na titulní stranu&hellip;"><img class="header__logo" src="{% static 'img/logo-transparent.png' %}"></a>
                 <h1 class="header__heading"><a href="{% url 'news' %}" title="Zpět na titulní stranu&hellip;">Střední škola, Odry, <small class="text-muted">příspěvková organizace</small></a></h1>
@@ -66,7 +67,25 @@
             loga Erasmus plus, Moravskoslezský kraj, Operační program Výzkum, vývoj a vzdělávání (EU)
             jedna fotka -->
 
-            <p>&copy; Střední škola, Odry, příspěvková organizace 2017</p>
+            <div class="sponsors">
+                <a href="http://www.odry.cz/" title="Město Odry" target="_blank">
+                    <img src="{% static 'img/logo-odry.png' %}" alt="Město Odry">
+                </a>
+                <a href="https://www.msk.cz/" title="Moravskoslezský kraj" target="_blank">
+                    <img src="{% static 'img/logo-moravskoslezsky_kraj.jpg' %}" alt="Moravskoslezský kraj">
+                </a>
+                <a href="https://www.msk.cz/" title="Příspěvková organizace Moravskoslezského kraje" target="_blank">
+                    <img src="{% static 'img/logo-prispevkova_organizace.png' %}" alt="Příspěvková organizace Moravskoslezského kraje">
+                </a>
+                <a href="http://www.naerasmusplus.cz/" title="Erasmus+" target="_blank">
+                    <img src="{% static 'img/logo-erasmus_plus.png' %}" alt="Erasmus+">
+                </a>
+                <a href="http://www.msmt.cz/strukturalni-fondy-1/op-vvv" title="Operační program Výzkum, vývoj a vzdělávání" target="_blank">
+                    <img src="{% static 'img/logo-eu.png' %}" alt="Operační program Výzkum, vývoj a vzdělávání">
+                </a>
+            </div>
+
+            <p>&copy; Střední škola, Odry, příspěvková organizace {% now "Y" %}</p>
             <p>Sokolovská 647/1, 742 35 Odry</p>
 
             {# <a href="{% url 'login' %}"><i class="fa fa-user-o"></i></a> #}       
