@@ -1,26 +1,25 @@
-# Design
-- do patičky loga sponzorů
-
 # Todo
-- detekovat a vyřešit 500
-- lepší markdown parser (lepší BR)
-- odstranit z repo configy a db, nechat jen .dist (a dát do gitinore)
-- pojmenovat česky fields v administraci
-- do patičky loga
-- dát do adminu bootstrap 4 & font awesome
-- nasměrovat DNS
-- h1 / h2 / h3 (/ h4 / h5 / h6)
-- hezčí h2 nadpis?
+- rozjet na lokální virtuálce
+- nahrát na lokál produkční data
+- přidat (tajný) přidávač stránek - stačí view
 
-- vyřešit logování
-
-- nastavit někam jinam SECURITY_KEY a DEBUG
 - zálohovat db & uploadované soubory
-- značka u odkazů, které vedou ven
-- transitions
+- odstranit z repo configy a db, nechat jen .dist (a dát do gitinore)
+- google analytics
+- vyřešit logování
+- nastavit někam jinam SECURITY_KEY a DEBUG
+- detekovat a vyřešit 500
+
+- pojmenovat česky fields v administraci
+- dát do adminu bootstrap 4 & font awesome
 - vycentrovat vertikálně text v menu
 - font-size, line-height, perex color
-- detekovat / problém s odlášeným účtem
+- responzivita
+- transitions
+- hezčí nadpisy?
+- lepší markdown parser (lepší BR) / WYSIWYG
+- značka u odkazů, které vedou ven
+
 - postgres na produkci? https://www.digitalocean.com/community/tutorials/how-to-set-up-django-with-postgres-nginx-and-gunicorn-on-ubuntu-16-04
 - ufw firewall?
 
@@ -41,7 +40,7 @@
 - videa
 - vlastní vyhledávání
 - potvrzení při mazání
-- tabulky (markdown)
+- tabulky (markdown) / WYSIWYG
 - h1 odkaz nikoliv z homepage
 - data bez času v administraci
 - české url na login
@@ -64,9 +63,6 @@
 - návod do administrace
 - vícejazyčné překlady?
 
-# Poznámky
-- ssodry.cz běží na Savaně (zachovat kvůli e-mailům)
-
 # Použití
 - aktivace development prostředí: `venv/Scripts/activate`
 - spuštění develompment serveru: `python manage.py runserver`
@@ -78,6 +74,11 @@
 - `pip install Django==1.11.5 Pillow markdown django-bleach whitenoise`
 - `python manage.py createsuperuser` (používat vzdy username `admin`)
 
+# Instalace production (Debian)
+- git clone https://github.com/miro-junker/odry.git /home/odry/program
+
+
+
 # Instalace production (Raspbian)
 - Raspberry Pi Configuration:
     change password p6
@@ -85,7 +86,7 @@
     language cs, country cz
     timezone europe / prague
 - `sudo apt-get update`
-- sudo apt-get -y install mc nginx (python3-pip python3-dev libpq-dev postgresql postgresql-contrib)
+- sudo apt-get -y install git mc nginx (python3-pip python3-dev libpq-dev postgresql postgresql-contrib)
 - zkopírovat data do /home/odry/program
 - python3 -m venv pienv
 - source pienv/bin/activate

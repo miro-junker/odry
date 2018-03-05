@@ -61,7 +61,7 @@ def calendar_summary(request, year=False, month=False):
             'number': datetime.date(int(year), int(month), date_cnt).isocalendar()[1],
             'days': [],
         }
-        for day in range(7):
+        for _ in range(7):
             # days in first week before actual month
             if weekdaysBeforeMonth > 0:
                 week['days'].append(" ")
