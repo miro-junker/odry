@@ -226,6 +226,18 @@ def gallery_remove(request, pk):
 
 
 @login_required
+def page_new(request):
+    if request.method == "POST":
+        form = PageForm(request.POST)
+        if form.is_valid():
+            page_data = form.save()
+            return redirect('page', pk=page_data.pk)
+    else:
+        form = PageForm()
+    return render(request, 'schoolapp/page_edit.html', {'navigator_items':get_navigator_items(), 'form':form})
+
+
+@login_required
 def page_edit(request, pk):
     page = get_object_or_404(Page, pk=pk)
     if request.method == "POST":

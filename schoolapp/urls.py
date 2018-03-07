@@ -37,6 +37,7 @@ urlpatterns = [
     url(r'^sprava/soubory/$', views.file_edit, name='file_edit'),
     url(r'^sprava/soubor/(?P<pk>[0-9]+)/smazat$', views.file_remove, name='file_remove'),
 
+    url(r'^sprava/strana/nova/$', views.page_new, name='page_new'),
     url(r'^sprava/strana/(?P<pk>[0-9]+)/$', views.page_edit, name='page_edit'),
 ]
 

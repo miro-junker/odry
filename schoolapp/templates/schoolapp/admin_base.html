@@ -106,6 +106,9 @@
             <hr>
             
             <h2>Statické stránky</h2>
+            <ul style="display:none">
+                <li><a href="{% url 'page_new' %}" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Přidat stránku</a></li>
+            </ul>
 
             <table>
                 {% for page in navigator_items.page %}

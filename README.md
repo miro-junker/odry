@@ -1,8 +1,6 @@
 # Todo
-- rozjet na lokální virtuálce
-- nahrát na lokál produkční data
 - přidat (tajný) přidávač stránek - stačí view
-
+- zrušit redirecty na produkci po uložení
 - zálohovat db & uploadované soubory
 - odstranit z repo configy a db, nechat jen .dist (a dát do gitinore)
 - google analytics
@@ -63,9 +61,12 @@
 - návod do administrace
 - vícejazyčné překlady?
 
+# Spuštění development serveru (Windows)
+- v cmd.exe: `venv\Scripts\activate.bat`
+- `python manage.py runserver`
+
 # Použití
 - aktivace development prostředí: `venv/Scripts/activate`
-- spuštění develompment serveru: `python manage.py runserver`
 - aktualizace modelu: `python manage.py migrate schoolapp`
 - vytvoření admina: `python manage.py createsuperuser` (používat vždy username `admin`)
 
@@ -92,9 +93,9 @@
 - source pienv/bin/activate
 - pip install Django==1.11.5 markdown django-bleach Pillow whitenoise gunicorn (psycopg2)
 - python3 manage.py collectstatic
-- nastavit DJANGO_SECRET_KEY v ./start
+- nastavit DJANGO_SECRET_KEY a DEBUG v settings.py
 - `deactivate`
-- cp home/pi/odry/program/gunicorn.service /etc/systemd/system/gunicorn.service
+- cp /home/pi/odry/program/gunicorn.service /etc/systemd/system/gunicorn.service
 - sudo nano /etc/systemd/system/gunicorn.service
 - sudo systemctl start gunicorn
 - sudo systemctl enable gunicorn
