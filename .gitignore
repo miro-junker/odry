@@ -1,7 +1,11 @@
 *.pyc
 __pycache__
 venv
+pienv
 db.sqlite3
 .DS_Store
 media
 .sass-cache
+static
+odryproject/settings.py
+
